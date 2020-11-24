@@ -2,7 +2,7 @@
 Web System Development project repository.
  > MarvelHeroJam  is a (micro-)service-oriented strategy game that is using the data about the characters provided by Marvel Comics API and Star Trek API.
 
-# Built With 
+## Built With 
 - PrimeNg
 - Font Awesome
 - Angular Material
@@ -10,10 +10,10 @@ Web System Development project repository.
 - Bootstrap
 - Firebase
 
-# Authors
+## Authors
  - Leahu Andrei
  - Movileanu Diana-Oana 
  - Popescu Iuliana
  
- # Project progress
+ ### Project progress
  > You can see the project progress by looking at the Wiki -> [Project Progress Page](https://github.com/IulianaPopescu97/websysproject/wiki/Project-progress).
