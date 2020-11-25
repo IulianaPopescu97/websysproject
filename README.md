@@ -1,8 +1,10 @@
 # Strategy Game on Web (SAW) 
 Web System Development project repository.
- > MarvelHeroJam  is a (micro-)service-oriented strategy game that is using the data about the characters provided by Marvel Comics API and Star Trek API.
+ > MarvelHeroJam  is a (micro-)service-oriented strategy game that is using the data about the characters provided by Marvel Comics API.
 
-## Built With 
+## Built With
+- Angular
+- Firebase 
 - PrimeNg
 - Font Awesome
 - Angular Material
