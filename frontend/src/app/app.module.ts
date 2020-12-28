@@ -14,6 +14,27 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { LoginComponent } from "./pages/login/login.component";
+import { RegisterComponent } from "./pages/register/register.component";
+import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
+import { VerifyEmailComponent } from "./pages/verify-email/verify-email.component";
+import { AuthService } from "./services/auth.service";
+
+
+var firebaseConfig = {
+  apiKey: "AIzaSyAF233FV7gag4i9Xz8n1WuuPYhbBk7vGWk",
+  authDomain: "web-sys-project.firebaseapp.com",
+  projectId: "web-sys-project",
+  storageBucket: "web-sys-project.appspot.com",
+  messagingSenderId: "521629972601",
+  appId: "1:521629972601:web:57ef5f4c5924514054bca8",
+  measurementId: "G-1C4BDT0NNB"
+};
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -23,10 +44,13 @@ import { ComponentsModule } from "./components/components.module";
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-  providers: [],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
