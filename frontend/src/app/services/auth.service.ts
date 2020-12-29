@@ -9,9 +9,9 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
 
-  private myFunc: (severity: string, summary: string, detail: string) => void;
+  private showPrimengMessage: (severity: string, summary: string, detail: string) => void;
   showMessage(fn: (severity: string, summary: string, detail: string) => void) {
-    this.myFunc = fn;
+    this.showPrimengMessage = fn;
   }
   user: User;
   userState: any;
@@ -41,7 +41,7 @@ export class AuthService {
         });
         this.SetUserData(result.user);
       }).catch((error) => {
-        this.myFunc('error','Error', error.message);
+        this.showPrimengMessage('error','Error', error.message);
       })
   }
 
@@ -51,7 +51,7 @@ export class AuthService {
         this.SendVerificationMail();
         this.SetUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message)
+        this.showPrimengMessage('error','Error', error.message);
       })
   }
 
@@ -65,9 +65,9 @@ export class AuthService {
   ForgotPassword(passwordResetEmail) {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
+      this.showPrimengMessage('info','Password reset', 'Password reset email sent, check your inbox.');
     }).catch((error) => {
-      window.alert(error)
+      this.showPrimengMessage('error','Error', error.message);
     })
   }
 
@@ -88,7 +88,7 @@ export class AuthService {
         })
       this.SetUserData(result.user);
     }).catch((error) => {
-      window.alert(error)
+      this.showPrimengMessage('error','Error', error.message);
     })
   }
 
