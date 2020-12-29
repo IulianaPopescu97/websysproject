@@ -9,13 +9,17 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
 
+  private myFunc: (severity: string, summary: string, detail: string) => void;
+  showMessage(fn: (severity: string, summary: string, detail: string) => void) {
+    this.myFunc = fn;
+  }
   user: User;
   userState: any;
 
   constructor( public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone) {
+    public ngZone: NgZone,) {
       this.afAuth.authState.subscribe(user => {
         if (user) {
           this.userState = user;
@@ -37,7 +41,7 @@ export class AuthService {
         });
         this.SetUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message)
+        this.myFunc('error','Error', error.message);
       })
   }
 

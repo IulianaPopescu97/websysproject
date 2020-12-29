@@ -24,6 +24,9 @@ import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password
 import { VerifyEmailComponent } from "./pages/verify-email/verify-email.component";
 import { AuthService } from "./services/auth.service";
 
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyAF233FV7gag4i9Xz8n1WuuPYhbBk7vGWk",
@@ -48,6 +51,8 @@ var firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    MessagesModule,
+    MessageModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent],
   providers: [AuthService],
