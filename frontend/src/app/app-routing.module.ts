@@ -20,38 +20,40 @@ const routes: Routes = [
 { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
 { path: 'sign-in', component: LoginComponent },
 { path: 'sign-up', component: RegisterComponent },
-{ path: 'dashboard', component: AdminLayoutComponent, canActivate: [AuthGuard] },
 { path: 'forgot-password', component: ForgotPasswordComponent },
-{ path: 'email-verification', component: VerifyEmailComponent }
-    // {
-    //   path: "",
-    //   redirectTo: "dashboard",
-    //   pathMatch: "full"
-    // },
-    // {
-    //   path: "",
-    //   component: AdminLayoutComponent,
-    //   children: [
-    //     {
-    //       path: "",
-    //       loadChildren:
-    //         "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
-    //     }
-    //   ]
-    // }, {
-    //   path: '',
-    //   component: AuthLayoutComponent,
-    //   children: [
-    //     {
-    //       path: '',
-    //       loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: "**",
-    //   redirectTo: "dashboard"
-    // }
+{ path: 'email-verification', component: VerifyEmailComponent },
+    {
+      path: "",
+      redirectTo: "dashboard",
+      pathMatch: "full",
+      canActivate: [AuthGuard]
+    },
+    {
+      path: "",
+      component: AdminLayoutComponent,
+      canActivate: [AuthGuard],
+      children: [
+        {
+          path: "",
+          loadChildren:
+            "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
+        }
+      ]
+    }, {
+      path: '',
+      component: AuthLayoutComponent,
+      canActivate: [AuthGuard],
+      children: [
+        {
+          path: '',
+          loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
+        }
+      ]
+    },
+    {
+      path: "**",canActivate: [AuthGuard],
+      redirectTo: "dashboard"
+    }
 ];
 
 @NgModule({
