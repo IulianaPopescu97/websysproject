@@ -12,12 +12,7 @@ import { VerifyEmailComponent } from "./pages/verify-email/verify-email.componen
 import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
-{ path:  'login', component:  LoginComponent },
-{ path:  'register', component:  RegisterComponent },
-{ path:  'forgot-password', component:  ForgotPasswordComponent },
-{ path:  'verify-email', component:  VerifyEmailComponent },
-
-{ path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+{ path: '', redirectTo: 'sign-in', pathMatch: 'full' },
 { path: 'sign-in', component: LoginComponent },
 { path: 'sign-up', component: RegisterComponent },
 { path: 'forgot-password', component: ForgotPasswordComponent },
