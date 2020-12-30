@@ -26,6 +26,8 @@ import { AuthService } from "./services/auth.service";
 
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import { AccountService } from "./services/account.service";
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 var firebaseConfig = {
@@ -54,8 +56,8 @@ var firebaseConfig = {
     MessagesModule,
     MessageModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent],
-  providers: [AuthService],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent, ProfileComponent],
+  providers: [AuthService, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
