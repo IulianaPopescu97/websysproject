@@ -3,6 +3,7 @@ import firebase from 'firebase/app'
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -112,12 +113,12 @@ export class AuthService {
       this.router.navigate(['sign-in']);
     })
   }
+
+  GetUser(): User {
+    // return this.userState ? this.userState : JSON.parse(localStorage.getItem('user')) as User;
+    return firebase.auth().currentUser;
+  }
+
+
 }
 
-export interface User {
-  uid: string;
-  email: string;
-  displayName: string;
-  photoURL: string;
-  emailVerified: boolean;
-}

@@ -1,0 +1,36 @@
+.profile-pic, .owner {
+  position: absolute;
+  left: 50%;
+  /* max-width: 9.365rem; */
+  -webkit-transform: translate(-50%,-30%);
+  transform: translate(-50%,-30%);
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  vertical-align: middle;
+  text-align: center;
+  color: transparent;
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+.profile-pic.owner:hover {
+  background-color: rgba(0,0,0,.5);
+  z-index: 10000;
+  color: #fff;
+  transition: all .3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile-pic span {
+  display: inline-block;
+  padding-top: 4rem;
+}
+
+.style-location {
+  font-family: sans-serif ;
+}

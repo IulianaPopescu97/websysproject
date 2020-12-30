@@ -17,17 +17,23 @@ import { ComponentsModule } from "./components/components.module";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from "@angular/fire/storage";
 
 import { LoginComponent } from "./pages/login/login.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
 import { VerifyEmailComponent } from "./pages/verify-email/verify-email.component";
+import { ProfileComponent } from './pages/profile/profile.component';
+
 import { AuthService } from "./services/auth.service";
 
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { AccountService } from "./services/account.service";
-import { ProfileComponent } from './pages/profile/profile.component';
+
+import { TooltipModule } from 'primeng/tooltip';
+
+import { MatChipsModule } from '@angular/material/chips';
 
 
 var firebaseConfig = {
@@ -50,11 +56,19 @@ var firebaseConfig = {
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
+    //Firebase modules
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
+
+    //PrimeNG modules
     MessagesModule,
-    MessageModule
+    MessageModule,
+    TooltipModule,
+
+    //Angular Material modules
+    MatChipsModule,
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent, ProfileComponent],
   providers: [AuthService, AccountService],

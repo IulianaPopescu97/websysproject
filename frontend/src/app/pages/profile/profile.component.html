@@ -1,1 +1,51 @@
-<p>profile works!</p>
+<main>
+  <section class="section section-shaped section-lg mt-5">
+    <!-- Cardul de profil -->
+    <div class="container-fluid mt-7">
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+          <div class="card card-profile shadow">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <div class="profile-pic owner" [ngStyle]="{'background-image': 'url(' + fb + ')'}"
+                    (click)="uploader.click()">
+                    <span><i class="fa fa-camera-retro"></i></span>
+                    <span>&nbsp;Change Image</span>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="d-flex justify-content-center">
+                    <input hidden type="file" (change)="onFileSelected($event)" accept="image/*" #uploader>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body pt-0 pt-md-4">
+              <div class="text-center" style="padding-top: 7vw;">
+                <h3 *ngIf="cUser && cUser.displayName">{{cUser.displayName}}</h3>
+                <h3 *ngIf="cUser && cUser.email">{{cUser.email}}
+                  <span *ngIf="cUser.emailVerified">&nbsp;<i class="fa fa-user-check" pTooltip="Your email is verified :D" tooltipPosition="right"></i></span>
+                  <span *ngIf="cUser.emailVerified">&nbsp;<i class="fa fa-exclamation-triangle" pTooltip="Please verify your email!" tooltipPosition="right"></i></span>
+                </h3>
+                <div class="h5 font-weight-300 style-location" *ngIf="ipData">
+                  IP Address: {{ipData.ip}},<i class="fa fa-map-marker"></i>&nbsp;City: {{ipData.city}}, County: {{ipData.region}}, Country: {{ipData.country}}
+                </div>
+                <div class="h5 mt-4">
+                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                </div>
+                <div>
+                  <i class="ni education_hat mr-2"></i>University of Computer Science
+                </div>
+                <hr class="my-4" />
+                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records
+                  all of his own music.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+

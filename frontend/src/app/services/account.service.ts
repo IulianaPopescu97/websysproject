@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+// import * as admin from 'firebase-admin';
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +9,17 @@ export class AccountService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getPhoto() {
-    return this.firestore.collection('photos').snapshotChanges();
-  }
-
-  addPhoto(photo: String){
-    return this.firestore.collection('photos').add(photo);
-  }
-
-  updatePhoto(photo: String){
-    delete photo.id;
-    this.firestore.doc('photos/' + photo.id).update(photo);
-  }
-
-  deletePhoto(photoId: string){
-    this.firestore.doc('photos/' + photoId).delete();
- }
+  // async UpdateProfileImage(userId: string, photoUrl: string) {
+  //   admin.auth().updateUser(userId, {
+  //   photoURL: photoUrl,
+  // })
+  // .then((userRecord) => {
+  //   // See the UserRecord reference doc for the contents of userRecord.
+  //   console.log('Successfully updated user', userRecord.toJSON());
+  // })
+  // .catch((error) => {
+  //   console.log('Error updating user:', error);
+  // });
+  // }
 
 }
