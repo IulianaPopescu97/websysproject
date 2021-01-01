@@ -1,4 +1,4 @@
-export class ipInfo {
+export interface ipInfo {
   city: string;
   country: string;
   hostname: string;
