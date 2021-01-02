@@ -14,6 +14,7 @@ import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { SettingsComponent } from "src/app/pages/settings/settings.component";
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     TypographyComponent,
     NotificationsComponent,
     MapComponent,
+    SettingsComponent,
   ]
 })
 export class AdminLayoutModule {}

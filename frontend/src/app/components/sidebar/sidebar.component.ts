@@ -23,10 +23,10 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/maps",
-    title: "Maps",
+    path: "/settings",
+    title: "Settings",
     rtlTitle: "خرائط",
-    icon: "icon-pin",
+    icon: "icon-settings-gear-63",
     class: "" },
   {
     path: "/notifications",
