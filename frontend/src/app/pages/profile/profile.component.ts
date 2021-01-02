@@ -13,7 +13,7 @@ import { map, finalize } from "rxjs/operators";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  fb;
+  fb: string;
   cUser: User;
   token: string = "df96ac341a7a8d";
   selectedFile: File = null;
@@ -24,10 +24,17 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.cUser = this.authService.GetUser();
+    console.log(this.cUser,'cUser');
+    if(this.cUser && this.cUser.photoURL)
+    this.fb = this.cUser.photoURL;
+    else
+    this.fb = '../../assets/img/anime3.png';
+
     this.SetIpAddress();
   }
 
   onFileSelected(event) {
+    this.fb = '../../assets/img/loading.gif'
     var n = Date.now();
     const file = <File>event.target.files[0];
     const filePath = `ProfileImages/${n}`;
@@ -40,7 +47,10 @@ export class ProfileComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              this.fb = url;
+              this.authService.UpdateProfileImg(url).then(x => {
+                this.fb = url;
+              });
+
             }
             console.log(this.fb,'fb');
           });

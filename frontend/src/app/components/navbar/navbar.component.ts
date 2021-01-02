@@ -4,6 +4,7 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from "src/app/services/auth.service";
+import { User } from "src/app/models/user";
 
 @Component({
   selector: "app-navbar",
@@ -11,6 +12,7 @@ import { AuthService } from "src/app/services/auth.service";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  cUser: User;
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -55,6 +57,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
+    this.cUser = this.authService.GetUser();
   }
 
   collapse() {

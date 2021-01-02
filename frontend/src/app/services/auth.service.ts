@@ -126,9 +126,15 @@ export class AuthService {
     })
   }
 
+  async UpdateProfileImg(photoURL: string) {
+    const profile = {
+        photoURL: photoURL
+    }
+    return (await this.afAuth.currentUser).updateProfile(profile);
+}
+
   GetUser(): User {
-    // return this.userState ? this.userState : JSON.parse(localStorage.getItem('user')) as User;
-    return firebase.auth().currentUser;
+    return firebase.auth().currentUser ? firebase.auth().currentUser : this.userState ? this.userState : JSON.parse(localStorage.getItem('user')) as User;
   }
 
 

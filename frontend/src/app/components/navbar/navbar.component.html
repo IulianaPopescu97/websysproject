@@ -84,14 +84,14 @@
             ngbDropdownToggle
           >
             <div class=" photo">
-              <img alt="Profile Photo" src="assets/img/anime3.png" />
+              <img alt="Profile Photo" [src]="(cUser && cUser.photoURL) ? cUser.photoURL : 'assets/img/anime3.png'" />
             </div>
             <b class=" caret d-none d-lg-block d-xl-block"> </b>
             <p class=" d-lg-none">Log out</p>
           </a>
           <ul class=" dropdown-navbar" ngbDropdownMenu>
             <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" routerLink="/profile" ngbDropdownItem>
+              <a class=" nav-item" href="javascript:void(0)" routerLink="/user" ngbDropdownItem>
                 Profile
               </a>
             </li>
