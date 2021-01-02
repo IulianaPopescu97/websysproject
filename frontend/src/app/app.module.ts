@@ -35,6 +35,8 @@ import { TooltipModule } from 'primeng/tooltip';
 
 import { MatChipsModule } from '@angular/material/chips';
 
+import { AutocompleteLibModule } from "angular-ng-autocomplete";
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyAF233FV7gag4i9Xz8n1WuuPYhbBk7vGWk",
@@ -56,6 +58,7 @@ var firebaseConfig = {
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
+
     //Firebase modules
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
@@ -69,6 +72,8 @@ var firebaseConfig = {
 
     //Angular Material modules
     MatChipsModule,
+
+    AutocompleteLibModule,
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent, ProfileComponent],
   providers: [AuthService, AccountService],

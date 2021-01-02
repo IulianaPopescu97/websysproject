@@ -5,14 +5,14 @@
         <div class="authBlock">
           <h3>Sign in</h3>
           <div class="formGroup">
-            <input type="text" class="form-control" placeholder="Username" #userName required>
+            <input type="text" class="form-control" placeholder="Username" required [(ngModel)]="userName" (ngModelChange)="updateSignInButtonDisabled()">
           </div>
           <div class="formGroup">
-            <input type="password" class="form-control" placeholder="Password" #userPassword required>
+            <input type="password" class="form-control" placeholder="Password" required [(ngModel)]="userPassword" (ngModelChange)="updateSignInButtonDisabled()">
           </div>
           <div class="formGroup">
-            <input type="button" class="btn btn-primary btn-block" value="Sign in"
-              (click)="authService.SignIn(userName.value, userPassword.value)">
+            <input type="button" class="btn btn-primary btn-block" value="Sign in" [disabled]="signInButtonDisabled"
+              (click)="authService.SignIn(userName, userPassword)">
           </div>
           <div class="formGroup">
             <button type="button" class="btn btn-danger btn-block" (click)="authService.GoogleAuth()">
@@ -20,11 +20,15 @@
             </button>
           </div>
           <div class="forgotPassword">
-            <span routerLink="/forgot-password">Forgot Password?</span>
+            <span routerLink="/forgot-password" class="text-hover" style="cursor: pointer;"
+            pTooltip="&#9889;&nbsp;Reset your passowd in case you forgot it, by providing us with your account registratin email."
+            tooltipPosition="bottom">Forgot Password?</span>
           </div>
         </div>
         <div class="redirectToLogin">
-          <span>Not registered yet?<span class="redirect" routerLink="/sign-up"> Register</span></span>
+          <span><span pTooltip="&#9940;&nbsp;In order to play our games, you have to use an account." tooltipPosition="bottom">Not registered yet?</span>&nbsp;
+          <span class="redirect text-hover" style="cursor: pointer;" routerLink="/sign-up" pTooltip="&#9917;&nbsp;Create a free account in order to be able to play our games!"
+          tooltipPosition="bottom">Register</span></span>
         </div>
       </div>
     </div>

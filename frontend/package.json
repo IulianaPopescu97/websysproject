@@ -74,6 +74,7 @@
     "@angular/platform-browser-dynamic": "11.0.5",
     "@angular/router": "11.0.5",
     "@ng-bootstrap/ng-bootstrap": "6.0.0",
+    "angular-ng-autocomplete": "^2.0.2",
     "chart.js": "2.9.4",
     "core-js": "3.8.1",
     "firebase": "^8.2.1",
