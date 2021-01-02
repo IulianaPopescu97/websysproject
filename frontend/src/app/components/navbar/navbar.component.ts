@@ -3,8 +3,8 @@ import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService } from "src/app/services/account.service";
 import { AuthService } from "src/app/services/auth.service";
-import { User } from "src/app/models/user";
 
 @Component({
   selector: "app-navbar",
@@ -12,7 +12,7 @@ import { User } from "src/app/models/user";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  cUser: User;
+
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -28,7 +28,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private element: ElementRef,
     private router: Router,
     private modalService: NgbModal,
-    public  authService:  AuthService
+    public accountService: AccountService,
+    public authService: AuthService,
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -57,7 +58,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
-    this.cUser = this.authService.GetUser();
   }
 
   collapse() {
