@@ -25,8 +25,8 @@
               <div class="text-center" style="padding-top: 7vw;">
                 <h3 *ngIf="cUser && cUser.displayName">{{cUser.displayName}}</h3>
                 <h3 *ngIf="cUser && cUser.email">{{cUser.email}}
-                  <span *ngIf="cUser.emailVerified">&nbsp;<i class="fa fa-user-check" pTooltip="Your email is verified :D" tooltipPosition="right"></i></span>
-                  <span *ngIf="cUser.emailVerified">&nbsp;<i class="fa fa-exclamation-triangle" pTooltip="Please verify your email!" tooltipPosition="right"></i></span>
+                  <span *ngIf="cUser.emailVerified">&nbsp;<i class="fas fa-check-square" pTooltip="Your email is verified :D" tooltipPosition="right"></i></span>
+                  <span *ngIf="!cUser.emailVerified">&nbsp;<i class="fa fa-exclamation-triangle" pTooltip="Please verify your email!" tooltipPosition="right"></i></span>
                 </h3>
                 <div class="h5 font-weight-300 style-location" *ngIf="ipData">
                   IP Address: {{ipData.ip}},<i class="fa fa-map-marker"></i>&nbsp;City: {{ipData.city}}, County: {{ipData.region}}, Country: {{ipData.country}}

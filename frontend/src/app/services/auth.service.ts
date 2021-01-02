@@ -16,14 +16,16 @@ export class AuthService {
   }
   user: User;
   userState: any;
+  navigateToDashboard: boolean = true;
 
   constructor( public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,) {
+
       this.afAuth.authState.subscribe(user => {
         if (user) {
-          this.router.navigate(['dashboard']);
+          if(this.navigateToDashboard) this.router.navigate(['dashboard']);
           this.userState = user;
           localStorage.setItem('user', JSON.stringify(this.userState));
           JSON.parse(localStorage.getItem('user'));
@@ -32,6 +34,15 @@ export class AuthService {
           JSON.parse(localStorage.getItem('user'));
         }
       })
+
+      router.events.subscribe(x => {
+        var cRoute = this.router.url
+        if(cRoute.includes('/sign-in') || cRoute.includes('/sign-up') || cRoute.includes('/forgot-password') || cRoute.includes('/email-verification')){
+          this.navigateToDashboard = true;
+        }
+        else
+        this.navigateToDashboard = false;
+      })
    }
 
    SignIn(email, password) {
@@ -39,7 +50,7 @@ export class AuthService {
       .then((result) => {
         console.log(result);
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          if(this.navigateToDashboard) this.router.navigate(['dashboard']);
         });
         this.SetUserData(result.user);
       }).catch((error) => {
