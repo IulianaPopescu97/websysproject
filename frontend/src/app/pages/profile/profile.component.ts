@@ -6,6 +6,7 @@ import { ipInfo } from 'src/app/models/ipinfo';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { map, finalize } from "rxjs/operators";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,6 @@ import { map, finalize } from "rxjs/operators";
 export class ProfileComponent implements OnInit {
   fb: string;
   cUser: User;
-  token: string = "df96ac341a7a8d";
   selectedFile: File = null;
   public ipData: ipInfo;
   downloadURL: Observable<string>;
@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit {
   }
 
   SetIpAddress() {
-    this.http.get("https://ipinfo.io/?token=" + this.token).subscribe(data => {
+    this.http.get("https://ipinfo.io/?token=" + environment.IpInfoKey).subscribe(data => {
       this.ipData = data as ipInfo;
     });
   }
