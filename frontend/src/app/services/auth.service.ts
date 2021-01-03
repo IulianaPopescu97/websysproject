@@ -131,7 +131,32 @@ export class AuthService {
         photoURL: photoURL
     }
     return (await this.afAuth.currentUser).updateProfile(profile);
-}
+  }
+
+  async UpdateProfileName(name: string) {
+    const profile = {
+      displayName: name
+    }
+    return (await this.afAuth.currentUser).updateProfile(profile);
+  }
+
+  async UpdateProfileEmail(email: string, password: string) {
+    firebase.auth()
+    .signInWithEmailAndPassword(this.GetUser().email, password)
+    .then(function(userCredential) {
+        userCredential.user.updateEmail(email)
+    })
+
+  }
+
+
+
+  async UpdateProfilePhotoUrl(url: string) {
+    const profile = {
+      photoURL: url
+    }
+    return (await this.afAuth.currentUser).updateProfile(profile);
+  }
 
   GetUser(): User {
     return firebase.auth().currentUser ? firebase.auth().currentUser : this.userState ? this.userState : JSON.parse(localStorage.getItem('user')) as User;

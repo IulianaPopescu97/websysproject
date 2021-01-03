@@ -16,6 +16,8 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { SettingsComponent } from "src/app/pages/settings/settings.component";
 import { TooltipModule } from "primeng/tooltip";
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   imports: [
@@ -25,6 +27,8 @@ import { TooltipModule } from "primeng/tooltip";
     HttpClientModule,
     NgbModule,
     TooltipModule,
+    DialogModule,
+    ButtonModule
   ],
   declarations: [
     DashboardComponent,

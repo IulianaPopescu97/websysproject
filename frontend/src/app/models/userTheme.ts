@@ -1,5 +1,5 @@
 export interface UserTheme {
-  uid: string;
+  // uid: string;
   sidebarColor: ThemeColor;
   theme: Theme;
 }
@@ -14,5 +14,4 @@ enum ThemeColor {
 enum Theme {
   white = "white-content",
   black = "black-content"
-
 }

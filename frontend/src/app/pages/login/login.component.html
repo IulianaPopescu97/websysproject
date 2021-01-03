@@ -13,9 +13,11 @@
           <div class="formGroup">
             <input type="button" class="btn btn-primary btn-block" value="Sign in" [disabled]="signInButtonDisabled"
               (click)="authService.SignIn(userName, userPassword)">
+              <!-- (click)="authService.SignIn(userName, userPassword).then(accountService.GetEntry('theme'))"> -->
           </div>
           <div class="formGroup">
             <button type="button" class="btn btn-danger btn-block" (click)="authService.GoogleAuth()">
+            <!-- <button type="button" class="btn btn-danger btn-block" (click)="authService.GoogleAuth().then(accountService.GetEntry('theme'))"> -->
               Log in with Google
             </button>
           </div>

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { timeout } from 'rxjs/operators';
+import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   userPassword: string;
   signInButtonDisabled: boolean = false;
 
-  constructor(public  authService:  AuthService, private ref: ChangeDetectorRef) { }
+  constructor(public  authService:  AuthService, private ref: ChangeDetectorRef, public accountService: AccountService) { }
 
   ngOnInit(): void {
     this.userName = this.userPassword = "";
