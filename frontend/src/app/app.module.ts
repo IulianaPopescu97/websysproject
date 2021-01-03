@@ -41,6 +41,7 @@ import { AutocompleteLibModule } from "angular-ng-autocomplete";
 var firebaseConfig = {
   apiKey: "AIzaSyAF233FV7gag4i9Xz8n1WuuPYhbBk7vGWk",
   authDomain: "web-sys-project.firebaseapp.com",
+  databaseURL: "https://web-sys-project-default-rtdb.firebaseio.com",
   projectId: "web-sys-project",
   storageBucket: "web-sys-project.appspot.com",
   messagingSenderId: "521629972601",

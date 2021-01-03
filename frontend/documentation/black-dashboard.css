@@ -12200,7 +12200,6 @@ fieldset[disabled] .btn-link.active {
 
 .footer .nav {
   display: inline-block;
-  float: left;
   margin-bottom: 0;
   padding-left: 30px;
   list-style: none;
@@ -14526,7 +14525,7 @@ table.tablesorter thead tr .headerSortDown {
 }
 
 .fixed-plugin {
-  position: fixed;
+  position: relative;
   right: 0;
   width: 64px;
   background: rgba(0, 0, 0, 0.3);
@@ -14546,7 +14545,7 @@ table.tablesorter thead tr .headerSortDown {
 .fixed-plugin .fa-cog {
   color: #ffffff;
   padding: 10px;
-  border-radius: 0 0 6px 6px;
+  border-radius: 6px 6px 6px 6px;
   width: auto;
 }
 

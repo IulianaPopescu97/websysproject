@@ -3,7 +3,47 @@
     <div class="col-md-12">
       <div class="card card-plain">
         <div class="card-body">
-          TEST
+          Name: <span class="blue-hover" pTooltip="Edit your displayed Name" tooltipPosition="right">
+            {{cUser.displayName ? cUser.displayName : '—'}}<i *ngIf="!cUser.displayName" class="far fa-frown"
+              style="padding-left: 0.1vw;"></i></span><br>
+          Email: <span class="blue-hover" pTooltip="Edit your email address" tooltipPosition="right">
+            {{cUser.email}}</span>
+            <button (click)="''">Add Student</button>
+
+          <div class=" fixed-plugin">
+            <div class=" show-dropdown" ngbDropdown>
+              <a data-toggle="dropdown" ngbDropdownToggle>
+                <i class=" fa fa-cog fa-2x"> </i>
+              </a>
+              <ul ngbDropdownMenu>
+                <li class=" header-title">Sidebar Background</li>
+                <li class=" adjustments-line">
+                  <a class=" switch-trigger background-color" href="javascript:void(0)">
+                    <div class=" badge-colors text-center">
+                      <span class=" badge filter badge-danger" [ngClass]="{'active':sidebarColor==='red'}"
+                        (click)="changeSidebarColor('red')">
+                      </span>
+                      <span class=" badge filter badge-primary" [ngClass]="{'active':sidebarColor==='primary'}"
+                        (click)="changeSidebarColor('primary')"></span>
+                      <span class=" badge filter badge-info" [ngClass]="{'active':sidebarColor==='blue'}"
+                        (click)="changeSidebarColor('blue')"></span>
+                      <span class=" badge filter badge-success" [ngClass]="{'active':sidebarColor==='green'}"
+                        (click)="changeSidebarColor('green')">
+                      </span>
+                    </div>
+                    <div class=" clearfix"></div>
+                  </a>
+                </li>
+                <li class=" adjustments-line text-center color-change">
+                  <span class=" color-label"> LIGHT MODE </span>
+                  <span class=" badge light-badge mr-2" (click)="changeDashboardColor('white-content')"> </span>
+                  <span class=" badge dark-badge ml-2" (click)="changeDashboardColor('black-content')"> </span>
+                  <span class=" color-label"> DARK MODE </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

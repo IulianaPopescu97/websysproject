@@ -15,6 +15,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { SettingsComponent } from "src/app/pages/settings/settings.component";
+import { TooltipModule } from "primeng/tooltip";
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { SettingsComponent } from "src/app/pages/settings/settings.component";
     FormsModule,
     HttpClientModule,
     NgbModule,
+    TooltipModule,
   ],
   declarations: [
     DashboardComponent,
