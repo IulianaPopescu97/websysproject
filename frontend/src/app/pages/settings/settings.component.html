@@ -8,7 +8,7 @@
               style="padding-left: 0.1vw;"></i></span><br><br>
           Email: <span class="blue-hover" pTooltip="Edit your email address" tooltipPosition="right" (click)="displayEmailDialogue=true;">
             {{cUser.email}}</span><br><br>
-          PhotoURL: <span class="blue-hover" pTooltip="Edit your photo URL" tooltipPosition="right">
+          PhotoURL: <span class="blue-hover" pTooltip="Edit your photo URL" tooltipPosition="right" (click)="displayEmailUrlDialogue=true;">
             {{cUser.photoURL ? cUser.photoURL.substring(0,30)+"..." : '—'}}<i *ngIf="!cUser.photoURL" class="far fa-frown"
               style="padding-left: 0.1vw; width: 10rem"></i></span>
 
@@ -63,7 +63,7 @@
         </div>
     </div>
 </p-dialog>
-<p-dialog header="Edit your sign-in email" [(visible)]="displayEmailDialogue" (onHide)="emailInput.value = ''" [style]="{width: '45vw'}">
+<p-dialog header="Edit your sign-in email" [(visible)]="displayEmailDialogue" (onHide)="emailInput.value = '';userPwd.value=''" [style]="{width: '45vw'}">
   <div class="p-col-12 p-md-4">
        <div class="p-inputgroup">
            <span class="p-inputgroup-addon"><i>@</i></span>
@@ -78,6 +78,15 @@
        </div>
    </div>
 </p-dialog>
-<p-dialog header="Edit your displayed Name" [(visible)]="displayEmailUrlDialogue">
-  Content
+<p-dialog header="Edit your displayed Name" [(visible)]="displayEmailUrlDialogue" (onHide)="urlInput.value = ''">
+  <div class="p-col-12 p-md-4">
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText [placeholder]="cUser.photoURL ? cUser.photoURL : 'Your favorite image url...'" [style]="{width: '35vw'}" #urlInput required>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+    <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!urlInput.value" (click)="updateEmailURL(urlInput.value)"></button>
+    </div>
+</div>
 </p-dialog>

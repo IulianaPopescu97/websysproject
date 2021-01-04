@@ -54,9 +54,9 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  updateEmailURL(email: string, password: string) {
+  updateEmailURL(url: string) {
     this.displayEmailUrlDialogue = false;
-    this.authService.UpdateProfileEmail(email,password).then(x => {
+    this.authService.UpdateProfilePhotoUrl(url).then(x => {
       this.cUser = this.authService.GetUser();
       this.authService.UpdateLocalStorageUser(this.cUser);
     });
