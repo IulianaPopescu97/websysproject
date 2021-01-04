@@ -7,7 +7,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
@@ -36,6 +35,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { AutocompleteLibModule } from "angular-ng-autocomplete";
+import { GamesComponent } from './games/games.component';
 
 
 var firebaseConfig = {
@@ -73,10 +73,9 @@ var firebaseConfig = {
 
     //Angular Material modules
     MatChipsModule,
-
     AutocompleteLibModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent, ProfileComponent],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent, ProfileComponent, GamesComponent],
   providers: [AuthService, AccountService],
   bootstrap: [AppComponent]
 })

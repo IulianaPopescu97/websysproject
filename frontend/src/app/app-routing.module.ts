@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from "./pages/login/login.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
@@ -34,16 +33,6 @@ const routes: Routes = [
           path: "",
           loadChildren:
             "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
-        }
-      ]
-    }, {
-      path: '',
-      component: AuthLayoutComponent,
-      canActivate: [AuthGuard],
-      children: [
-        {
-          path: '',
-          loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
         }
       ]
     },
