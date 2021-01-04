@@ -25,10 +25,10 @@ export class AuthService {
 
       this.afAuth.authState.subscribe(user => {
         if (user) {
-          if(this.navigateToDashboard) this.router.navigate(['dashboard']);
           this.userState = user;
           localStorage.setItem('user', JSON.stringify(this.userState));
           JSON.parse(localStorage.getItem('user'));
+          if(this.navigateToDashboard) this.router.navigate(['dashboard']);
         } else {
           localStorage.setItem('user', null);
           JSON.parse(localStorage.getItem('user'));
@@ -48,11 +48,11 @@ export class AuthService {
    SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
+        this.SetUserData(result.user);
         console.log(result);
         this.ngZone.run(() => {
           if(this.navigateToDashboard) this.router.navigate(['dashboard']);
         });
-        this.SetUserData(result.user);
       }).catch((error) => {
         this.showPrimengMessage('error','Error', error.message);
       })
@@ -146,10 +146,7 @@ export class AuthService {
     .then(function(userCredential) {
         userCredential.user.updateEmail(email)
     })
-
   }
-
-
 
   async UpdateProfilePhotoUrl(url: string) {
     const profile = {
@@ -160,6 +157,10 @@ export class AuthService {
 
   GetUser(): User {
     return firebase.auth().currentUser ? firebase.auth().currentUser : this.userState ? this.userState : JSON.parse(localStorage.getItem('user')) as User;
+  }
+
+  UpdateLocalStorageUser(user: any) {
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
 

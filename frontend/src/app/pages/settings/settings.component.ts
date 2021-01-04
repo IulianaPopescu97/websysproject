@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user';
 import { UserTheme } from 'src/app/models/userTheme';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
+import firebase from 'firebase/app'
 
 @Component({
   selector: 'app-settings',
@@ -41,6 +42,7 @@ export class SettingsComponent implements OnInit {
     this.displayNameDialogue = false;
     this.authService.UpdateProfileName(name).then(x => {
       this.cUser = this.authService.GetUser();
+      this.authService.UpdateLocalStorageUser(this.cUser);
     });
   }
 
@@ -48,6 +50,15 @@ export class SettingsComponent implements OnInit {
     this.displayEmailDialogue = false;
     this.authService.UpdateProfileEmail(email,password).then(x => {
       this.cUser = this.authService.GetUser();
+      this.authService.UpdateLocalStorageUser(this.cUser);
+    });
+  }
+
+  updateEmailURL(email: string, password: string) {
+    this.displayEmailUrlDialogue = false;
+    this.authService.UpdateProfileEmail(email,password).then(x => {
+      this.cUser = this.authService.GetUser();
+      this.authService.UpdateLocalStorageUser(this.cUser);
     });
   }
 

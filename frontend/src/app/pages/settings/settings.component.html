@@ -63,17 +63,18 @@
         </div>
     </div>
 </p-dialog>
-<p-dialog header="Edit your displayed Name" [(visible)]="displayEmailDialogue" (onHide)="emailInput.value = ''" [style]="{width: '45vw'}">
+<p-dialog header="Edit your sign-in email" [(visible)]="displayEmailDialogue" (onHide)="emailInput.value = ''" [style]="{width: '45vw'}">
   <div class="p-col-12 p-md-4">
        <div class="p-inputgroup">
            <span class="p-inputgroup-addon"><i>@</i></span>
            <input type="email" pInputText [placeholder]="cUser.email" [style]="{width: '35vw'}" type="email" email="true" ngModel #emailInput required>
        </div>
        <br>
-       <input type="password" class="form-control" placeholder="Password" required #userPwd>
+       <label for="userPwd">Please confirm your password</label>
+       <input type="password" class="form-control" placeholder="Password" required #userPwd style="background-color: rgb(232, 240, 254);color: black;">
        <br>
        <div class="d-flex justify-content-center">
-       <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!emailInput.value || !emailInput.value.includes('@') || !emailInput.value.includes('.') || !userPwd.value" (click)="updateEmail(emailInput.value)"></button>
+       <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!emailInput.value || !emailInput.value.includes('@') || !emailInput.value.includes('.') || !userPwd.value || emailInput.value == cUser.email" (click)="updateEmail(emailInput.value, userPwd.value)"></button>
        </div>
    </div>
 </p-dialog>
