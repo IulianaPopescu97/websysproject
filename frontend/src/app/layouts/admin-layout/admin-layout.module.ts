@@ -18,6 +18,7 @@ import { SettingsComponent } from "src/app/pages/settings/settings.component";
 import { TooltipModule } from "primeng/tooltip";
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { GamesComponent } from "src/app/games/games.component";
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ButtonModule } from 'primeng/button';
     NotificationsComponent,
     MapComponent,
     SettingsComponent,
+    GamesComponent
   ]
 })
 export class AdminLayoutModule {}

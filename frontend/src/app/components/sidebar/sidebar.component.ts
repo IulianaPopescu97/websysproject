@@ -32,6 +32,12 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
+    path: "/map",
+    title: "Gamer Location",
+    icon: "icon-pin",
+    class: ""
+  },
+  {
     path: "/icons",
     title: "Icons",
     icon: "icon-atom",

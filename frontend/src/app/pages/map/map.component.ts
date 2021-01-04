@@ -1,4 +1,9 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { ipInfo } from "src/app/models/ipinfo";
+import { User } from "src/app/models/user";
+import { AuthService } from "src/app/services/auth.service";
+import { environment } from "src/environments/environment";
 
 declare const google: any;
 
@@ -14,15 +19,22 @@ draggable?: boolean;
   templateUrl: "map.component.html"
 })
 export class MapComponent implements OnInit {
-  constructor() {}
-
+  constructor(private http: HttpClient, private authService: AuthService) {}
+  public ipData: ipInfo;
+  public cUser: User;
   ngOnInit() {
+    this.cUser = this.authService.GetUser();
+    this.http.get("https://ipinfo.io/?token=" + environment.IpInfoKey).subscribe(data => {
 
-       /* var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+      this.ipData = data as ipInfo;
+
+      var coord = this.ipData.loc.split(',');
+
+      var myLatlng = new google.maps.LatLng(coord[0], coord[1]);
         var mapOptions = {
             zoom: 13,
             center: myLatlng,
-            scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+            scrollwheel: true,
             styles: [{
                 "elementType": "geometry",
                 "stylers": [{
@@ -219,6 +231,11 @@ export class MapComponent implements OnInit {
         });
 
         // To add the marker to the map, call setMap();
-        marker.setMap(map); */
+        marker.setMap(map);
+    });
+
+
   }
+
+
 }

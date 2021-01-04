@@ -35,7 +35,6 @@ import { TooltipModule } from 'primeng/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { AutocompleteLibModule } from "angular-ng-autocomplete";
-import { GamesComponent } from './games/games.component';
 
 
 var firebaseConfig = {
@@ -75,7 +74,7 @@ var firebaseConfig = {
     MatChipsModule,
     AutocompleteLibModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent, ProfileComponent, GamesComponent],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent, ProfileComponent,],
   providers: [AuthService, AccountService],
   bootstrap: [AppComponent]
 })
