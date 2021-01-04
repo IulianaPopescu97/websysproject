@@ -73,6 +73,10 @@ export class AuthService {
       return this.afAuth.currentUser.then(u => u.sendEmailVerification())
       .then(() => {
         this.router.navigate(['email-verification']);
+        this.showPrimengMessage('info','Email verification', 'Email verification has been sent to you');
+      })
+      .catch((error) => {
+        this.showPrimengMessage('error','Error', error.message);
       })
   }
 
@@ -131,29 +135,60 @@ export class AuthService {
     const profile = {
         photoURL: photoURL
     }
-    return (await this.afAuth.currentUser).updateProfile(profile);
+    return (await this.afAuth.currentUser).updateProfile(profile)
+    .then(() => {this.showPrimengMessage('info','Profile Image', 'Your profile image url has been updated to ' + profile.photoURL + '!')})
+    .catch((error) => {
+      this.showPrimengMessage('error','Error', error.message);
+    });;
   }
 
   async UpdateProfileName(name: string) {
     const profile = {
       displayName: name
     }
-    return (await this.afAuth.currentUser).updateProfile(profile);
+    return (await this.afAuth.currentUser).updateProfile(profile)
+    .then(() => {this.showPrimengMessage('info','Display name update', 'Your displayed name has been updated to ' + profile.displayName + '!')})
+    .catch((error) => {
+      this.showPrimengMessage('error','Error', error.message);
+    });
+  }
+
+  async UpdateProfilePassword(cPassword: string, nPassword: string) {
+    firebase.auth()
+    .signInWithEmailAndPassword(this.GetUser().email, cPassword)
+    .then(function(userCredential) {
+        userCredential.user.updatePassword(nPassword).then(x=> {
+
+          this.showPrimengMessage('info','Password update', 'Your password has been updated!')
+        })
+    })
+    .catch((error) => {
+      console.log('err',error)
+      this.showPrimengMessage('error','Error', error.message);
+    });
   }
 
   async UpdateProfileEmail(email: string, password: string) {
     firebase.auth()
     .signInWithEmailAndPassword(this.GetUser().email, password)
     .then(function(userCredential) {
-        userCredential.user.updateEmail(email)
+        userCredential.user.updateEmail(email).then(() => {this.showPrimengMessage('info','E-mail update', 'Your email has been updated to ' + email + '!')})
     })
+    .catch((error) => {
+      this.showPrimengMessage('error','Error', error.message);
+    });
   }
 
   async UpdateProfilePhotoUrl(url: string) {
     const profile = {
       photoURL: url
     }
-    return (await this.afAuth.currentUser).updateProfile(profile);
+    return (await this.afAuth.currentUser).updateProfile(profile)
+    .then(() => {this.showPrimengMessage('info','E-mail update', 'Your Photo URL has been updated to ' + profile.photoURL + '!')})
+    .catch((error) => {
+    console.log('err',error)
+    this.showPrimengMessage('error','Error', error.message);
+    });;
   }
 
   GetUser(): User {

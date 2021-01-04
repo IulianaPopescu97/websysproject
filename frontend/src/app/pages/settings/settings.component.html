@@ -13,7 +13,10 @@
               {{cUser.email}}</span><br><br><br><br>
               <i class="fas fa-image"></i>&nbsp;PhotoURL: <span class="blue-hover" pTooltip="Edit your photo URL" tooltipPosition="right" (click)="displayEmailUrlDialogue=true;">
               {{cUser.photoURL ? cUser.photoURL.substring(0,50)+"..." : '—'}}<i *ngIf="!cUser.photoURL" class="far fa-frown"
-                style="padding-left: 0.1vw; width: 10rem"></i></span>
+                style="padding-left: 0.1vw; width: 10rem"></i></span><br><br><br><br>
+                <i class="fas fa-key"></i><span class="blue-hover" pTooltip="Change your password" tooltipPosition="right" (click)="displayPasswordDialogue=true;">
+                  Change password<i *ngIf="!cUser.displayName" class="far fa-frown"
+                  style="padding-left: 0.1vw;"></i></span>
           </div>
 
           <div class=" fixed-plugin">
@@ -63,8 +66,10 @@
         </div>
         <br>
         <div class="d-flex justify-content-center">
-        <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!nameInput.value" (click)="updateName(nameInput.value)"></button>
+        <div [pTooltip]="!nameInput.value ? 'Please double check that you have properly completed all fields!' : 'Update your display name' ">
+        <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!nameInput.value" (click)="updateName(nameInput.value)" #changeNameBtn></button>
         </div>
+      </div>
     </div>
 </p-dialog>
 <p-dialog header="Edit your sign-in email" [(visible)]="displayEmailDialogue" (onHide)="emailInput.value = '';userPwd.value=''" [style]="{width: '45vw'}">
@@ -78,11 +83,13 @@
        <input type="password" class="form-control" placeholder="Password" required #userPwd style="background-color: rgb(232, 240, 254);color: black;">
        <br>
        <div class="d-flex justify-content-center">
-       <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!emailInput.value || !emailInput.value.includes('@') || !emailInput.value.includes('.') || !userPwd.value || emailInput.value == cUser.email" (click)="updateEmail(emailInput.value, userPwd.value)"></button>
+        <div [pTooltip]="!emailInput.value || !emailInput.value.includes('@') || !emailInput.value.includes('.') || !userPwd.value || emailInput.value == cUser.email ? 'Please double check that you have properly completed all fields!' : 'Change your current sign-in email address!' ">
+       <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!emailInput.value || !emailInput.value.includes('@') || !emailInput.value.includes('.') || !userPwd.value || emailInput.value == cUser.email" (click)="updateEmail(emailInput.value, userPwd.value)" #changeEmailBtn></button>
        </div>
+      </div>
    </div>
 </p-dialog>
-<p-dialog header="Edit your displayed Name" [(visible)]="displayEmailUrlDialogue" (onHide)="urlInput.value = ''">
+<p-dialog header="Edit your photo URL" [(visible)]="displayEmailUrlDialogue" (onHide)="urlInput.value = ''">
   <div class="p-col-12 p-md-4">
     <div class="p-inputgroup">
         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
@@ -90,7 +97,31 @@
     </div>
     <br>
     <div class="d-flex justify-content-center">
-    <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!urlInput.value" (click)="updateEmailURL(urlInput.value)"></button>
+    <div [pTooltip]="!urlInput.value ? 'Please double check that you have properly completed all fields!' : 'Change your Photo URL' ">
+    <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!urlInput.value" (click)="updatePhotoURL(urlInput.value)" #changePhotoUrlBtn></button>
+    </div>
+    </div>
+</div>
+</p-dialog>
+<p-dialog header="Edit your password" [(visible)]="displayPasswordDialogue" (onHide)="crtPwd.value = '';pwdInput.value = '';pwdInput2.value=''">
+  <div class="p-col-12 p-md-4">
+    <label for="pwdInput">Please enter your new password</label>
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="fas fa-key"></i></span>
+        <input type="password" class="form-control" pInputText placeholder="New passwod" [style]="{width: '35vw'}" #pwdInput required style="background-color: rgb(232, 240, 254);color: black;">
+    </div>
+    <br>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="fas fa-key"></i></span>
+      <input type="password" class="form-control" pInputText placeholder="Confirm new passwod" [style]="{width: '35vw'}" #pwdInput2 required style="background-color: rgb(232, 240, 254);color: black;">
+  </div>
+    <br>
+    <label for="crtPwd">Please confirm your current password</label>
+    <input type="password" class="form-control" placeholder="Current Password" required #crtPwd style="background-color: rgb(232, 240, 254);color: black;">
+    <br>
+    <div class="d-flex justify-content-center">
+    <div [pTooltip]="!pwdInput.value || !pwdInput2.value || !crtPwd || pwdInput.value != pwdInput2.value || crtPwd.value == pwdInput2.value ? 'Please double check that you have properly completed all fields!' :'Change your current password' ">
+      <button pButton type="button" label="Submit" class="p-button-text" style="border: 2px solid grey;" [disabled]="!pwdInput.value || !pwdInput2.value || !crtPwd || pwdInput.value != pwdInput2.value || crtPwd.value == pwdInput2.value" (click)="updatePassword(crtPwd.value,pwdInput.value)" #changePwBtn></button></div>
     </div>
 </div>
 </p-dialog>

@@ -15,6 +15,7 @@ export class SettingsComponent implements OnInit {
   displayNameDialogue: boolean = false;
   displayEmailDialogue: boolean = false;
   displayEmailUrlDialogue: boolean = false;
+  displayPasswordDialogue: boolean = false;
   cUser: User;
   public sidebarColor: string = "red";
 
@@ -54,7 +55,7 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  updateEmailURL(url: string) {
+  updatePhotoURL(url: string) {
     this.displayEmailUrlDialogue = false;
     this.authService.UpdateProfilePhotoUrl(url).then(x => {
       this.cUser = this.authService.GetUser();
@@ -62,10 +63,12 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-
-
-
-
-
+  updatePassword(currentPwd: string, newPassword: string) {
+    this.displayPasswordDialogue = false;
+    this.authService.UpdateProfilePassword(currentPwd, newPassword).then(x => {
+      this.cUser = this.authService.GetUser();
+      this.authService.UpdateLocalStorageUser(this.cUser);
+    });
+}
 
 }
