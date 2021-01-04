@@ -1,16 +1,20 @@
 <div class="content">
+  <span style="font-size: 2.5rem;">Edit your information:</span>
   <div class="row">
     <div class="col-md-12">
       <div class="card card-plain">
         <div class="card-body">
-          Name: <span class="blue-hover" pTooltip="Edit your displayed Name" tooltipPosition="right" (click)="displayNameDialogue=true;">
-            {{cUser.displayName ? cUser.displayName : '—'}}<i *ngIf="!cUser.displayName" class="far fa-frown"
-              style="padding-left: 0.1vw;"></i></span><br><br>
-          Email: <span class="blue-hover" pTooltip="Edit your email address" tooltipPosition="right" (click)="displayEmailDialogue=true;">
-            {{cUser.email}}</span><br><br>
-          PhotoURL: <span class="blue-hover" pTooltip="Edit your photo URL" tooltipPosition="right" (click)="displayEmailUrlDialogue=true;">
-            {{cUser.photoURL ? cUser.photoURL.substring(0,30)+"..." : '—'}}<i *ngIf="!cUser.photoURL" class="far fa-frown"
-              style="padding-left: 0.1vw; width: 10rem"></i></span>
+          <div style="font-size: 1.5rem; color: rgb(161, 161, 161)">
+            <br><br><br><br>
+            <i class="fas fa-users"></i>&nbsp;Name: <span class="blue-hover" pTooltip="Edit your displayed Name" tooltipPosition="right" (click)="displayNameDialogue=true;">
+              {{cUser.displayName ? cUser.displayName : '—'}}<i *ngIf="!cUser.displayName" class="far fa-frown"
+                style="padding-left: 0.1vw;"></i></span><br><br><br><br>
+              <i class="fas fa-envelope-square"></i>&nbsp;Email: <span class="blue-hover" pTooltip="Edit your email address" tooltipPosition="right" (click)="displayEmailDialogue=true;">
+              {{cUser.email}}</span><br><br><br><br>
+              <i class="fas fa-image"></i>&nbsp;PhotoURL: <span class="blue-hover" pTooltip="Edit your photo URL" tooltipPosition="right" (click)="displayEmailUrlDialogue=true;">
+              {{cUser.photoURL ? cUser.photoURL.substring(0,50)+"..." : '—'}}<i *ngIf="!cUser.photoURL" class="far fa-frown"
+                style="padding-left: 0.1vw; width: 10rem"></i></span>
+          </div>
 
           <div class=" fixed-plugin">
             <div class=" show-dropdown" ngbDropdown>
