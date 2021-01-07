@@ -3,6 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  Marvel_Public_Key: "4d26ed24fcfe1483aa578c9c9f49fc23",
+  Marvel_Private_Key: "5154f85998a70bfb568b6b350a7ccc281d248125",
+  Marvel_Api_URL: "https://gateway.marvel.com:443/v1/public/characters?apikey=",
   IpInfoKey: "df96ac341a7a8d",
   production: false
 };
