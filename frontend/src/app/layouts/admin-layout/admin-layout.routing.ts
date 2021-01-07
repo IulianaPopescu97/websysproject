@@ -4,7 +4,7 @@ import { IconsComponent } from "../../pages/icons/icons.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { ProfileComponent } from "src/app/pages/profile/profile.component";
 import { SettingsComponent } from "src/app/pages/settings/settings.component";
-import { GamesComponent } from "src/app/games/games.component";
+import { GamesComponent } from "src/app/components/games/games.component";
 import { MapComponent } from "src/app/pages/map/map.component";
 
 export const AdminLayoutRoutes: Routes = [

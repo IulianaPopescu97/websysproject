@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user';
-import { AuthService } from '../services/auth.service';
-import { MarvelApiService } from '../services/marvel-api.service';
+import { User } from '../../models/user';
+import { AuthService } from '../../services/auth.service';
+import { MarvelApiService } from '../../services/marvel-api.service';
 
 @Component({
   selector: 'app-games',

@@ -1,0 +1,8 @@
+img{
+  width: 15rem;
+  height: 15rem;
+  border: 1rem rgba(128, 128, 128, 0.342) solid;
+}
+img :hover{
+  cursor: pointer!important;
+}

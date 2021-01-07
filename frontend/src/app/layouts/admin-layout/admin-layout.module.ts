@@ -18,8 +18,10 @@ import { SettingsComponent } from "src/app/pages/settings/settings.component";
 import { TooltipModule } from "primeng/tooltip";
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-import { GamesComponent } from "src/app/games/games.component";
+import { GamesComponent } from "src/app/components/games/games.component";
 import { DisplayGameCardComponent } from "src/app/components/display-game-card/display-game-card.component";
+import { GridComponent } from "src/app/components/TicTacToe/grid/grid.component";
+import { SquareComponent } from "src/app/components/TicTacToe/square/square.component";
 
 @NgModule({
   imports: [
@@ -42,7 +44,9 @@ import { DisplayGameCardComponent } from "src/app/components/display-game-card/d
     MapComponent,
     SettingsComponent,
     GamesComponent,
-    DisplayGameCardComponent
+    DisplayGameCardComponent,
+    GridComponent,
+    SquareComponent,
   ]
 })
 export class AdminLayoutModule {}
