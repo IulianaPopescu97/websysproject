@@ -1,5 +1,6 @@
 
 <div class="container">
+  <h2 *ngIf="xInArray && xInArray.name && oInArray && oInArray.name"><span [ngStyle]="{'color': color1}">{{xInArray.name}}</span> VS <span [ngStyle]="{'color': color2}">{{oInArray.name}}</span></h2>
   <h3 *ngIf="winner"> AND THE WINNER IS..... {{winner}} !!!! Click <span style="color: blue; cursor: pointer;" (click)="resetGame()">HERE</span> to reset the game.<br>
   <span *ngIf="winnerDetails">{{winner}}... {{winnerDetails}}</span></h3>
   <div style="display: grid; grid-template-columns: 15rem 15rem 15rem; grid-gap: 0rem;" *ngIf="show">

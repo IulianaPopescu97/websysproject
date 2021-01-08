@@ -7,6 +7,7 @@ import { MarvelApiService } from 'src/app/services/marvel-api.service';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
+
   characters: any[];
   show = true;
   turn: string = 'X';
@@ -19,6 +20,8 @@ export class GridComponent implements OnInit {
   winner: string = null;
   winnerDetails: string=null;
   comics: number[] = [];
+  color1: string = "";
+  color2: string = "";
 
   constructor(private marvelApi: MarvelApiService) { }
 
@@ -93,7 +96,7 @@ initialiseGame() {
   this.marvelApi.getCharactersFromComics(this.marvelApi.arrayToIdsWithSeparator(this.comics, '%2C')).subscribe(x => {
     //Store characters in array
     this.characters = x.data.results;
-
+    console.log(this.characters)
     //User characters besed on random indexes using Api data
     this.xInArray = this.characters[this.marvelApi.randomIntsFromInterval(0,this.characters.length-1,1)[0]];
 
@@ -105,10 +108,20 @@ initialiseGame() {
     this.imgUrlForX = this.xInArray.thumbnail.path + "." + this.xInArray.thumbnail.extension;
     this.imgUrlForO = this.oInArray.thumbnail.path + "." + this.oInArray.thumbnail.extension;
 
+    //Generate 2 random colors for combatants
+    this.color1 = this.generateRandomColor();
+    this.color2 = this.generateRandomColor();
+
     //Reset the game
     this.resetGame();
   })
 }
+  generateRandomColor() {
+    var color = Math.floor(Math.random() * 16777216).toString(16);
+    // Avoid loops.
+    return '#000000'.slice(0, -color.length) + color;
+  }
+
 
 
 
