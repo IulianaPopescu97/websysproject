@@ -87,22 +87,38 @@ calculateWinner() {
 }
 
 initialiseGame() {
+
+ this.initialiseXandO();
+
 //Add random comics ids to the comics array
   //Select 10 random numbers between 100 and 700(most exciting comics) to use them as url params for the marvel API
   this.comics = this.marvelApi.randomIntsFromInterval(100,700,10);
-  console.log(this.comics)
 
   //Call Marvel Api
   this.marvelApi.getCharactersFromComics(this.marvelApi.arrayToIdsWithSeparator(this.comics, '%2C')).subscribe(x => {
+
     //Store characters in array
     this.characters = x.data.results;
-    console.log(this.characters)
+
     //User characters besed on random indexes using Api data
-    this.xInArray = this.characters[this.marvelApi.randomIntsFromInterval(0,this.characters.length-1,1)[0]];
+
+    let imgNotAvailableUrl = "/image_not_available";
+
+    let notProperThumbnailForxInArray = true;
+    while(notProperThumbnailForxInArray){
+      this.xInArray = this.characters[this.marvelApi.randomIntsFromInterval(0,this.characters.length-1,1)[0]];
+      if(!this.xInArray.thumbnail.path.includes(imgNotAvailableUrl))
+        notProperThumbnailForxInArray = false;
+    }
 
     //Make sure we don't use the same character twice(as unlikely as it may be)
     let charactersExceptX = this.characters.filter(character => character !== this.xInArray);
-    this.oInArray = charactersExceptX[this.marvelApi.randomIntsFromInterval(0,charactersExceptX.length-1,1)[0]];
+    let notProperThumbnailForoInArray = true;
+    while(notProperThumbnailForoInArray){
+      this.oInArray = charactersExceptX[this.marvelApi.randomIntsFromInterval(0,charactersExceptX.length-1,1)[0]];
+      if(!this.oInArray.thumbnail.path.includes(imgNotAvailableUrl))
+        notProperThumbnailForoInArray = false;
+    }
 
     //Set image urls for the 2 players
     this.imgUrlForX = this.xInArray.thumbnail.path + "." + this.xInArray.thumbnail.extension;
@@ -118,8 +134,14 @@ initialiseGame() {
 }
   generateRandomColor() {
     var color = Math.floor(Math.random() * 16777216).toString(16);
-    // Avoid loops.
     return '#000000'.slice(0, -color.length) + color;
+  }
+
+  initialiseXandO() {
+    this.xInArray = null;
+    this.oInArray = null;
+    this.imgUrlForX = null;
+    this.imgUrlForO = null;
   }
 
 
