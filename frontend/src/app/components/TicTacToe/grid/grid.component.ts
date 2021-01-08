@@ -7,26 +7,26 @@ import { MarvelApiService } from 'src/app/services/marvel-api.service';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
-  characters: any;
+  characters: any[];
   show = true;
   turn: string = 'X';
   imgUrlForX: string;
   imgUrlForO: string;
-  nOsquares = Array(9).fill(null); //folosit doar la iterare
-  records = Array<string>(9).fill(null); //stocheaza istoria punctelor marcate
-  winner:string = null;
+  xInArray: any;
+  oInArray: any;
+  nOsquares = Array(9).fill(null); //used only for interation
+  records = Array<string>(9).fill(null); //keeps a record on the ponts that have been marked
+  winner: string = null;
+  winnerDetails: string=null;
+  comics: number[] = [];
+
   constructor(private marvelApi: MarvelApiService) { }
 
 ngOnInit() {
-  this.marvelApi.getAllCharacters().subscribe(x => {
-    this.characters = x
-    console.log(x);
-    this.imgUrlForX = x.data.results[0].thumbnail.path + "." + x.data.results[0].thumbnail.extension;
-    this.imgUrlForO = x.data.results[x.data.results.length-1].thumbnail.path + "." + x.data.results[x.data.results.length-1].thumbnail.extension;
-  })
+  this.initialiseGame();
  }
 
-makeMove(index: number){
+makeMove(index: number) {
   if(!this.records[index]){
     this.records.splice(index, 1, this.turn);
     this.turn === 'O' ? this.turn = 'X' : this.turn = 'O';
@@ -35,11 +35,15 @@ makeMove(index: number){
       case null:
         this.winner = null;
         break;
-      case 'O':
-        this.winner = this.characters.data.results[0].name;
+      case 'X':{
+        this.winnerDetails = this.xInArray.description
+        this.winner = this.xInArray.name;
+      }
         break;
-      case 'X':
-        this.winner = this.characters.data.results[this.characters.data.results.length-1].name;
+      case 'O':{
+        this.winnerDetails = this.oInArray.description
+        this.winner = this.oInArray.name;
+      }
         break;
       default:
         break;
@@ -47,7 +51,7 @@ makeMove(index: number){
   }
 }
 
-resetGame(){
+resetGame() {
   setTimeout(() => {
     this.show = false;
     setTimeout(() => this.show = true, 30)
@@ -57,7 +61,7 @@ resetGame(){
   this.winner = null;
 }
 
-calculateWinner(){
+calculateWinner() {
   if(this.winner)
   return this.winner;
 
@@ -73,10 +77,39 @@ calculateWinner(){
       this.records[a] === this.records[c]
     ) {
       console.log("We have a winner!!!",this.records[a] )
-      return this.records[a] //=== 'X' ? this.characters.data.results[0].name :  this.records[a] === 'O' ? this.characters.data.results[this.characters.data.results.length-1].name : null ;
+      return this.records[a]
     }
   }
   return null;
 }
+
+initialiseGame() {
+//Add random comics ids to the comics array
+  //Select 10 random numbers between 100 and 700(most exciting comics) to use them as url params for the marvel API
+  this.comics = this.marvelApi.randomIntsFromInterval(100,700,10);
+  console.log(this.comics)
+
+  //Call Marvel Api
+  this.marvelApi.getCharactersFromComics(this.marvelApi.arrayToIdsWithSeparator(this.comics, '%2C')).subscribe(x => {
+    //Store characters in array
+    this.characters = x.data.results;
+
+    //User characters besed on random indexes using Api data
+    this.xInArray = this.characters[this.marvelApi.randomIntsFromInterval(0,this.characters.length-1,1)[0]];
+
+    //Make sure we don't use the same character twice(as unlikely as it may be)
+    let charactersExceptX = this.characters.filter(character => character !== this.xInArray);
+    this.oInArray = charactersExceptX[this.marvelApi.randomIntsFromInterval(0,charactersExceptX.length-1,1)[0]];
+
+    //Set image urls for the 2 players
+    this.imgUrlForX = this.xInArray.thumbnail.path + "." + this.xInArray.thumbnail.extension;
+    this.imgUrlForO = this.oInArray.thumbnail.path + "." + this.oInArray.thumbnail.extension;
+
+    //Reset the game
+    this.resetGame();
+  })
+}
+
+
 
 }

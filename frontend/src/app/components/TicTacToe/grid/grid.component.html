@@ -1,13 +1,14 @@
 
 <div class="container">
-  <h3 *ngIf="winner"> AND THE WINNER IS..... {{winner}} !!!!</h3>
+  <h3 *ngIf="winner"> AND THE WINNER IS..... {{winner}} !!!! Click <span style="color: blue; cursor: pointer;" (click)="resetGame()">HERE</span> to reset the game.<br>
+  <span *ngIf="winnerDetails">{{winner}}... {{winnerDetails}}</span></h3>
   <div style="display: grid; grid-template-columns: 15rem 15rem 15rem; grid-gap: 0rem;" *ngIf="show">
     <div *ngFor="let square of nOsquares; index as i;" >
       <app-square #ig (click)="ig.clicked(turn); makeMove(i)" [xPhotoUrl]="imgUrlForX" [oPhotoUrl]="imgUrlForO"></app-square>
     </div>
   </div>
   <br>
-  <button class="btn btn-primary" (click)="resetGame()">Reset Game</button>
+  <button class="btn btn-primary" (click)="initialiseGame()">Start a new game</button>
 </div>
 
 

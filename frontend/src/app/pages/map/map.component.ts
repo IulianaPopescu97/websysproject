@@ -24,7 +24,7 @@ export class MapComponent implements OnInit {
   public cUser: User;
   ngOnInit() {
     this.cUser = this.authService.GetUser();
-    this.http.get("https://ipinfo.io/?token=" + environment.IpInfoKey).subscribe(data => {
+    this.http.get(environment.Ip_Info_Url + environment.Ip_Info_Key).subscribe(data => {
 
       this.ipData = data as ipInfo;
 
