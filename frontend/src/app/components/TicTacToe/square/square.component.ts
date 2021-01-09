@@ -9,6 +9,7 @@ export class SquareComponent implements OnInit {
 
  @Input() xPhotoUrl: string;
  @Input() oPhotoUrl: string;
+ @Input() winner: string;
  photo: string;
  value: string;
  touched: boolean = false;
@@ -22,7 +23,7 @@ export class SquareComponent implements OnInit {
   }
 
   clicked(value){
-    if(!this.touched){
+    if(!this.touched && !this.winner){
       switch (value) {
         case '_': {
           this.photo =  "../../../assets/img/" + value + ".png";

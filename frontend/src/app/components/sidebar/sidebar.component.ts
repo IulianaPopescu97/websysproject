@@ -37,18 +37,6 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-pin",
     class: ""
   },
-  {
-    path: "/icons",
-    title: "Icons",
-    icon: "icon-atom",
-    class: ""
-  },
-  {
-    path: "/tables",
-    title: "Table List",
-    icon: "icon-puzzle-10",
-    class: ""
-  },
 ];
 
 @Component({

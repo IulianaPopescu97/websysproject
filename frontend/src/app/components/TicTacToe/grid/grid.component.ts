@@ -41,8 +41,8 @@ ngOnInit() {
 }
 
 makePlayerMove(index: number) {
-  this.makeMove(index);
   if(!this.winner){
+    this.makeMove(index);
     if(this.playerMode == GameMode.twoPlayersEasy){
       this.makeEasyAiMove();
     }
@@ -73,8 +73,13 @@ makeMove(index: number) {
         this.winner = this.oInArray.name;
       }
         break;
+      case 'D':{
+        this.winner="Just a draw"
+      }
+        break;
       default:
         break;
+
     }
   }
 }
@@ -108,8 +113,9 @@ calculateWinner() {
       return this.records[a]
     }
   }
-  return null;
+  return !this.checkIfThereAreEmptyPositions() ? 'D' : null;
 }
+
 
 initialiseGame() {
 this.startGame = false;
@@ -180,7 +186,7 @@ this.startGame = false;
   }
 
   makeMediumAiMove() {
-   while(true) {
+   while(true && this.checkIfThereAreEmptyPositions()) {
     let randomIndex = this.marvelApi.randomIntsFromInterval(0, this.squareComponentReferences.length -1, 1)[0];
     if(!this.records[randomIndex]){
       this.squareComponentReferences.toArray()[randomIndex].clicked(this.turn)
@@ -188,9 +194,6 @@ this.startGame = false;
       break;
     }
    }
-
-
-
   }
 
   log(message) {
@@ -198,16 +201,13 @@ this.startGame = false;
   }
 
   checkIfThereAreEmptyPositions() {
+    var result: boolean = false;
     this.records.forEach(position => {
-      if(position == null){
-        return true;
-      }
+      if(position == null)
+        result = true;
     });
-    return false;
+    return result;
   }
-
-
-
 
 }
 

@@ -5,7 +5,7 @@
      VS <span [ngStyle]="{'color': color2}" [pTooltip]="oInArray.description ? oInArray.description : 'No additional info available &#10060;'">{{oInArray.name}}</span>
   </h2>
   <h3 *ngIf="winner"> AND THE WINNER IS..... {{winner}} !!!! Click <span style="color: blue; cursor: pointer;" (click)="resetGame()">HERE</span> to reset the game.<br>
-  <span *ngIf="winnerDetails">{{winner}}... {{winnerDetails}}</span></h3>
+  <span *ngIf="winnerDetails && winner!='Just a draw'">{{winner}}... {{winnerDetails}}</span></h3>
   <div *ngIf="!startGame" class="row" style="background-image: url(../../../../assets/img/bg2.jpg);">
   <p-button [label]="'2Players'" icon="pi pi-users" (click)="playerMode = 1; startGame=true;" styleClass="p-button-help" class="col mt-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
   <p-button [label]="'1Player Easy'" icon="pi pi-android" (click)="playerMode = 2; startGame=true;"  styleClass="p-button-success" class="col mt-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
@@ -13,7 +13,7 @@
   </div>
   <div style="display: grid; grid-template-columns: 15rem 15rem 15rem; grid-gap: 0rem;" *ngIf="show && startGame">
     <div *ngFor="let square of nOsquares; index as i;" >
-      <app-square #ig (click)="ig.clicked(turn); makePlayerMove(i)" [xPhotoUrl]="imgUrlForX" [oPhotoUrl]="imgUrlForO"></app-square>
+      <app-square #ig (click)="ig.clicked(turn); makePlayerMove(i)" [winner]="winner" [xPhotoUrl]="imgUrlForX" [oPhotoUrl]="imgUrlForO"></app-square>
     </div>
   </div>
   <br>
