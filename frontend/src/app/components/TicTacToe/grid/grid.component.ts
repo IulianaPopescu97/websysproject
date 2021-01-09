@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { MarvelApiService } from 'src/app/services/marvel-api.service';
+import { SquareComponent } from '../square/square.component';
 
 @Component({
   selector: 'app-grid',
@@ -8,6 +10,9 @@ import { MarvelApiService } from 'src/app/services/marvel-api.service';
 })
 export class GridComponent implements OnInit {
 
+  @ViewChildren("ig") squareComponentReferences: QueryList<SquareComponent>;
+  twoPlayers: boolean = true;
+  easyAi: boolean = true;
   characters: any[];
   show = true;
   turn: string = 'X';
@@ -29,8 +34,22 @@ ngOnInit() {
   this.initialiseGame();
  }
 
+ ngAfterViewInit(): void { //Needed for 2 players to get a reference of all squares
+  this.squareComponentReferences.forEach(element => {
+    element.hello();
+  });
+}
+
+makePlayerMove(index: number) {
+  this.makeMove(index);
+  if(this.twoPlayers && !this.winner && this.easyAi){
+  this.makeEasyAiMove();
+  }
+
+}
+
 makeMove(index: number) {
-  if(!this.records[index]){
+  if(!this.records[index]) {
     this.records.splice(index, 1, this.turn);
     this.turn === 'O' ? this.turn = 'X' : this.turn = 'O';
 
@@ -142,6 +161,16 @@ initialiseGame() {
     this.oInArray = null;
     this.imgUrlForX = null;
     this.imgUrlForO = null;
+  }
+
+  makeEasyAiMove() {
+    for (let index = 0; index < this.squareComponentReferences.length; index++) {
+      if(!this.records[index]){
+        this.squareComponentReferences.toArray()[index].clicked(this.turn)
+        this.makeMove(index);
+        break;
+      }
+    }
   }
 
 

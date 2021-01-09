@@ -5,7 +5,7 @@
   <span *ngIf="winnerDetails">{{winner}}... {{winnerDetails}}</span></h3>
   <div style="display: grid; grid-template-columns: 15rem 15rem 15rem; grid-gap: 0rem;" *ngIf="show">
     <div *ngFor="let square of nOsquares; index as i;" >
-      <app-square #ig (click)="ig.clicked(turn); makeMove(i)" [xPhotoUrl]="imgUrlForX" [oPhotoUrl]="imgUrlForO"></app-square>
+      <app-square #ig (click)="ig.clicked(turn); makePlayerMove(i)" [xPhotoUrl]="imgUrlForX" [oPhotoUrl]="imgUrlForO"></app-square>
     </div>
   </div>
   <br>

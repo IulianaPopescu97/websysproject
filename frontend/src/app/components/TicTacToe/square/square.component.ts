@@ -22,7 +22,6 @@ export class SquareComponent implements OnInit {
   }
 
   clicked(value){
-    console.log(value,this.touched)
     if(!this.touched){
       switch (value) {
         case '_': {
@@ -46,6 +45,11 @@ export class SquareComponent implements OnInit {
       }
       this.touched=true;
     }
+
+}
+
+hello() {
+  console.log("dwaadw");
 
 }
 
