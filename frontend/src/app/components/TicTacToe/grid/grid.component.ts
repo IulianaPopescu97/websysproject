@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { MarvelApiService } from 'src/app/services/marvel-api.service';
 import { SquareComponent } from '../square/square.component';
 
@@ -10,9 +9,9 @@ import { SquareComponent } from '../square/square.component';
 })
 export class GridComponent implements OnInit {
 
+  isOpen = false; //Overlay
   @ViewChildren("ig") squareComponentReferences: QueryList<SquareComponent>;
-  twoPlayers: boolean = true;
-  easyAi: boolean = true;
+  playerMode: GameMode;
   characters: any[];
   show = true;
   turn: string = 'X';
@@ -27,6 +26,7 @@ export class GridComponent implements OnInit {
   comics: number[] = [];
   color1: string = "";
   color2: string = "";
+  startGame: boolean = false;
 
   constructor(private marvelApi: MarvelApiService) { }
 
@@ -42,9 +42,15 @@ ngOnInit() {
 
 makePlayerMove(index: number) {
   this.makeMove(index);
-  if(this.twoPlayers && !this.winner && this.easyAi){
-  this.makeEasyAiMove();
+  if(!this.winner){
+    if(this.playerMode == GameMode.twoPlayersEasy){
+      this.makeEasyAiMove();
+    }
+    else if(this.playerMode == GameMode.twoPlayersMedium) {
+      this.makeMediumAiMove();
+    }
   }
+
 
 }
 
@@ -106,7 +112,7 @@ calculateWinner() {
 }
 
 initialiseGame() {
-
+this.startGame = false;
  this.initialiseXandO();
 
 //Add random comics ids to the comics array
@@ -173,7 +179,44 @@ initialiseGame() {
     }
   }
 
+  makeMediumAiMove() {
+   while(true) {
+    let randomIndex = this.marvelApi.randomIntsFromInterval(0, this.squareComponentReferences.length -1, 1)[0];
+    if(!this.records[randomIndex]){
+      this.squareComponentReferences.toArray()[randomIndex].clicked(this.turn)
+      this.makeMove(randomIndex);
+      break;
+    }
+   }
+
+
+
+  }
+
+  log(message) {
+    console.log(message)
+  }
+
+  checkIfThereAreEmptyPositions() {
+    this.records.forEach(position => {
+      if(position == null){
+        return true;
+      }
+    });
+    return false;
+  }
+
 
 
 
 }
+
+export enum GameMode {
+  onePlayer = 1,
+  twoPlayersEasy = 2,
+  twoPlayersMedium = 3,
+  twoPlayersHard = 4,
+}
+
+
+

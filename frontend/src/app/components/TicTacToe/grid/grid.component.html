@@ -1,16 +1,25 @@
 
 <div class="container">
-  <h2 *ngIf="xInArray && xInArray.name && oInArray && oInArray.name"><span [ngStyle]="{'color': color1}">{{xInArray.name}}</span> VS <span [ngStyle]="{'color': color2}">{{oInArray.name}}</span></h2>
+  <h2 *ngIf="xInArray && xInArray.name && oInArray && oInArray.name">
+    <span [ngStyle]="{'color': color1}" [pTooltip]="xInArray.description ? xInArray.description : 'No additional info available &#10060;'">{{xInArray.name}}</span>
+     VS <span [ngStyle]="{'color': color2}" [pTooltip]="oInArray.description ? oInArray.description : 'No additional info available &#10060;'">{{oInArray.name}}</span>
+  </h2>
   <h3 *ngIf="winner"> AND THE WINNER IS..... {{winner}} !!!! Click <span style="color: blue; cursor: pointer;" (click)="resetGame()">HERE</span> to reset the game.<br>
   <span *ngIf="winnerDetails">{{winner}}... {{winnerDetails}}</span></h3>
-  <div style="display: grid; grid-template-columns: 15rem 15rem 15rem; grid-gap: 0rem;" *ngIf="show">
+  <div *ngIf="!startGame" class="row">
+  <p-button [label]="'2Players'" icon="pi pi-users" (click)="playerMode = 1; startGame=true;" styleClass="p-button-help" class="col-12 mt-4" [style]="{'width': '50vw','height': '10vh'}"></p-button>
+  <p-button [label]="'1Player Easy'" icon="pi pi-android" (click)="playerMode = 2; startGame=true;"  styleClass="p-button-success" class="col-12 mt-4" [style]="{'width': '50vw','height': '10vh'}"></p-button>
+  <p-button [label]="'1Player Medium'" icon="pi pi-android" (click)="playerMode = 3; startGame=true;" styleClass="p-button-warning" class="col-12 mt-4" [style]="{'width': '50vw','height': '10vh'}"></p-button>
+  </div>
+  <div style="display: grid; grid-template-columns: 15rem 15rem 15rem; grid-gap: 0rem;" *ngIf="show && startGame">
     <div *ngFor="let square of nOsquares; index as i;" >
       <app-square #ig (click)="ig.clicked(turn); makePlayerMove(i)" [xPhotoUrl]="imgUrlForX" [oPhotoUrl]="imgUrlForO"></app-square>
     </div>
   </div>
   <br>
-  <button class="btn btn-primary" (click)="initialiseGame()">Start a new game</button>
+  <button class="btn btn-primary" (click)="initialiseGame()" *ngIf="startGame">Start a new game</button>
 </div>
+
 
 
 
