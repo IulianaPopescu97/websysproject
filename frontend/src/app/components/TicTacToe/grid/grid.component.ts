@@ -55,7 +55,7 @@ makePlayerMove(index: number) {
       this.makeExpertAiMove();
     }
   }
-
+}
   makeMove(index: number) {
     if (!this.records[index]) {
       this.records.splice(index, 1, this.turn);
