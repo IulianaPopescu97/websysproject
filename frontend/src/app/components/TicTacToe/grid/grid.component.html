@@ -1,26 +1,45 @@
-
 <div class="container">
   <h2 *ngIf="xInArray && xInArray.name && oInArray && oInArray.name">
-    <span [ngStyle]="{'color': color1}" [pTooltip]="xInArray.description ? xInArray.description : 'No additional info available &#10060;'">{{xInArray.name}}</span>
-     VS <span [ngStyle]="{'color': color2}" [pTooltip]="oInArray.description ? oInArray.description : 'No additional info available &#10060;'">{{oInArray.name}}</span>
+    <span [ngStyle]="{'color': color1}"
+      [pTooltip]="xInArray.description ? xInArray.description : 'No additional info available &#10060;'">{{xInArray.name}}</span>
+    VS <span [ngStyle]="{'color': color2}"
+      [pTooltip]="oInArray.description ? oInArray.description : 'No additional info available &#10060;'">{{oInArray.name}}</span>
   </h2>
-  <h3 *ngIf="winner"> AND THE WINNER IS..... {{winner}} !!!! Click <span style="color: blue; cursor: pointer;" (click)="resetGame()">HERE</span> to reset the game.<br>
-  <span *ngIf="winnerDetails && winner!='Just a draw'">{{winner}}... {{winnerDetails}}</span></h3>
+  <h3 *ngIf="winner"> AND THE WINNER IS..... {{winner}} !!!! Click <span style="color: blue; cursor: pointer;"
+      (click)="resetGame()">HERE</span> to reset the game.<br>
+    <span *ngIf="winnerDetails && winner!='Just a draw'">{{winner}}... {{winnerDetails}}</span>
+  </h3>
+
   <div *ngIf="!startGame" class="row" style="background-image: url(../../../../assets/img/bg2.jpg);">
-  <p-button [label]="'2Players'" icon="pi pi-users" (click)="playerMode = 1; startGame=true;" styleClass="p-button-help" class="col mt-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
-  <p-button [label]="'1Player Easy'" icon="pi pi-android" (click)="playerMode = 2; startGame=true;"  styleClass="p-button-success" class="col mt-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
-  <p-button [label]="'1Player Medium'" icon="pi pi-android" (click)="playerMode = 3; startGame=true;" styleClass="p-button-warning" class="col mt-4 mb-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
-  <p-button [label]="'1Player Expert'" icon="pi pi-android" (click)="playerMode = 4; startGame=true;" styleClass="p-button-danger" class="col mt-4 mb-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
+    <p-button [label]="'2Players'" icon="pi pi-users" (click)="playerMode = 1; startGame=true;"
+      styleClass="p-button-help" class="col mt-4" [style]="{'width': '57.8vw','height': '10vh','opacity':'0.9'}">
+    </p-button>
+    <div class="col mt-4">
+    <div style="background-color: rgb(126, 120, 120); padding-top: 1vw;" class="d-flex justify-content-center"><h1>Ai moves first:&nbsp;</h1><p-inputSwitch pTooltip="Choose if you or the AI will move first" [(ngModel)]="aiMovesFirst"></p-inputSwitch></div>
+    </div>
+    <div class="col mt-4">
+      <p-button [label]="'1Player Easy'" icon="pi pi-android" (click)="playerMode = 2; startGame=true; resetGame()"
+        styleClass="p-button-success" [style]="{'width': '57.8vw','height': '10vh','opacity':'0.9'}">
+      </p-button>
+    </div>
+    <div class="col mt-4 mb-4">
+      <p-button [label]="'1Player Medium'" icon="pi pi-android" (click)="playerMode = 3; startGame=true; resetGame()"
+        styleClass="p-button-warning" [style]="{'width': '57.8vw','height': '10vh','opacity':'0.9'}">
+      </p-button>
+    </div>
+    <div class="col mt-4 mb-4">
+      <p-button [label]="'1Player Expert'" icon="pi pi-android" (click)="playerMode = 4; startGame=true; resetGame()"
+        styleClass="p-button-danger" [style]="{'width': '57.8vw','height': '10vh','opacity':'0.9'}">
+      </p-button>
+    </div>
   </div>
+
   <div style="display: grid; grid-template-columns: 15rem 15rem 15rem; grid-gap: 0rem;" *ngIf="show && startGame">
-    <div *ngFor="let square of nOsquares; index as i;" >
-      <app-square #ig (click)="ig.clicked(turn); makePlayerMove(i)" [winner]="winner" [xPhotoUrl]="imgUrlForX" [oPhotoUrl]="imgUrlForO"></app-square>
+    <div *ngFor="let square of nOsquares; index as i;">
+      <app-square #ig (click)="ig.clicked(turn); makePlayerMove(i)" [winner]="winner" [xPhotoUrl]="imgUrlForX"
+        [oPhotoUrl]="imgUrlForO"></app-square>
     </div>
   </div>
   <br>
   <button class="btn btn-primary" (click)="initialiseGame()" *ngIf="startGame">Start a new game</button>
 </div>
-
-
-
-

@@ -28,32 +28,22 @@ export class GridComponent implements OnInit {
   color1: string = "";
   color2: string = "";
   startGame: boolean = false;
+  aiMovesFirst: boolean = false;
 
   constructor(private marvelApi: MarvelApiService) { }
 
 ngOnInit() {
-  let arr: any[3][3] =
-    [
-        [ 'O', null, 'O' ],
-        [ null, 'X', 'X' ],
-        [ null, null, null]
-    ];
-
-    console.log(arr)
-    let bestMove = this.findBestMove(arr);
-    console.log('best row',bestMove.row, 'best col' ,bestMove.col)
-
   this.initialiseGame();
  }
 
  ngAfterViewInit(): void { //Needed for 2 players to get a reference of all squares
   this.squareComponentReferences.forEach(element => {
-    element.hello();
+    // element.hello();
   });
 }
 
 makePlayerMove(index: number) {
-  if(!this.winner){
+  if(!this.winner && this.show){
     this.makeMove(index);
     if(this.playerMode == GameMode.twoPlayersEasy){
       this.makeEasyAiMove();
@@ -65,7 +55,6 @@ makePlayerMove(index: number) {
       this.makeExpertAiMove();
     }
   }
-  // console.log(this.oneDimensionalArrayToJaggedTicTacToe(this.records));
 
 }
 
@@ -102,11 +91,18 @@ makeMove(index: number) {
 resetGame() {
   setTimeout(() => {
     this.show = false;
-    setTimeout(() => this.show = true, 30)
+    setTimeout(() => {
+      this.show = true;
+      this.records = new Array<string>(9).fill(null);
+      this.turn = this.aiMovesFirst ? 'O' : 'X';
+      this.winner = null;
+      setTimeout(() => {
+        if(this.aiMovesFirst)
+      this.FirstAiMove()
+      }, 40);
+    }, 30)
   }, 30);
-  this.records = new Array<string>(9).fill(null);
-  this.turn = 'X';
-  this.winner = null;
+
 }
 
 calculateWinner() {
@@ -218,8 +214,11 @@ this.startGame = false;
       let bestMove = this.findBestMove(jaggedArr);
       let index = this.findIndexBasedOnRowAndCol(bestMove.row, bestMove.col);
       console.log('bestMove',bestMove,'index',index);
-      this.squareComponentReferences.toArray()[index].clicked(this.turn)
-      this.makeMove(index);
+      if(this.squareComponentReferences.toArray()[index]){
+        this.squareComponentReferences.toArray()[index].clicked(this.turn)
+        this.makeMove(index);
+      }
+
     }
   }
 
@@ -234,6 +233,24 @@ this.startGame = false;
         result = true;
     });
     return result;
+  }
+
+  FirstAiMove() {
+    if(!this.winner && this.aiMovesFirst && this.playerMode)
+      switch (this.playerMode) {
+        case GameMode.twoPlayersEasy:
+          this.makeEasyAiMove()
+          break;
+        case GameMode.twoPlayersMedium:
+          this.makeMediumAiMove()
+          break;
+        case GameMode.twoPlayersExpert:
+          this.makeExpertAiMove()
+          break;
+        default:
+          break;
+      }
+
   }
   //#region minMaxAlgoritm
 
