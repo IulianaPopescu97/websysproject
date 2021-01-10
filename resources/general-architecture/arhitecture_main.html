@@ -1,0 +1,218 @@
+<!-- MarvelHeroJam Documentation v1.01 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--  Meta  -->
+    <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
+    <title>MarvelHeroJam Web Application Documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--  Styles  -->
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container mt-4 mb-4">
+        <div class="section" style="margin-bottom: 15vw;">
+            <div class="one" onclick="location.href='https://en.wikipedia.org/wiki/Deadpool'" style="cursor: pointer">
+                <div class="icon">
+                    <div class="deadpool">
+                        <div class="line"></div>
+                        <div class="eye-left">
+                            <div class="pupil-left"></div>
+                        </div>
+                        <div class="eye-right">
+                            <div class="pupil-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="two"  onclick="location.href='https://en.wikipedia.org/wiki/Captain_America'" style="cursor: pointer">
+                <div class="icon">
+                    <div class="captain-america">
+                        <div class="hat">
+                            <h1>A</h1>
+                            <div class="wings-left"></div>
+                            <div class="wings-right"></div>
+                            <div class="hat-left">
+                                <div class="eye">
+                                    <div class="ball"></div>
+                                </div>
+                            </div>
+                            <div class="hat-right">
+                                <div class="eye">
+                                    <div class="ball"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mouth"></div>
+                        <div class="ears"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="three" onclick="location.href='https://en.wikipedia.org/wiki/Hulk'" style="cursor: pointer">
+                <div class="icon">
+                    <div class="hulk">
+                        <div class="eyebrow-left"></div>
+                        <div class="eyeball">
+                            <div class="right"></div>
+                        </div>
+                        <div class="eyebrow-right"></div>
+                        <div class="teeth"></div>
+                    </div>
+                    <div class="hair">
+                        <div class="hair1"></div>
+                        <div class="hair2"></div>
+                        <div class="hair3"></div>
+                        <div class="hair4"></div>
+                        <div class="hair5"></div>
+                        <div class="hair6"></div>
+                    </div>
+                    <div class="green-ears"></div>
+                </div>
+            </div>
+            <div class="four" onclick="location.href='https://en.wikipedia.org/wiki/Iron_Man'" style="cursor: pointer">
+                <div class="icon">
+                    <div class="ironman">
+                        <div class="mask">
+                            <div class="middle"></div>
+                            <div class="red-line"></div>
+                            <div class="yellow-line"></div>
+                            <div class="glowing-eyes"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+        <nav>
+            <h2 class="text-info">Page of Contents</h1>
+                <ol class="content-list text-secondary">                 
+					<li><a href="#arhitecture">Architectural Considerations</a></li>
+					<ol class="ml-1 sub-list content-list">
+					<li><a href="#Modules">Main modules</a></li>
+						<ol class="ml-1 sub-list content-list">
+							<li><a href="#account-manag">Account management</a></li>
+							<li><a href="#game-manag">Game management</a></li>
+						</ol>
+                        <li><a href="#Data-format">Input/Output data formats</a></li>
+                        <li><a href="#Data-flow">Data flow</a></li>
+                        <li><a href="#Task-flow">Task flow</a></li>
+                </ol>
+        </nav>
+        </div>
+        <hr>
+        <br>
+        <h3 class="text-info">Project designed by:</h3>
+        <ol>
+            <li>Leahu Andrei</li>
+            <li>Popescu Iuliana</li>
+            <li>Movileanu Diana</li>
+        </ol>
+		
+		<hr><br>
+        <h3 id="arhitecture" class="text-info">Architectural Considerations</h3>
+        <p> This part will cover the general arhitecture of the Web application. </p>
+        <br>
+        <h5 id="Modules" class="text-info">Main modules</h5>
+        <br>
+		<h5 id="account-manag" class="text-info">First Module - Account management</h5>
+        <br>
+        <p>
+            One of our most important function, is to provide a clean and user friendly registration and login functionalities.
+			The user data will be saved in the firebase database.			
+        </p>
+		 <p>
+            The log in form has 4 main sections, fully developed. The first section is for filling the username and password linked to an account. 
+			The second section is another type of log in form but with the data from the google account linked for the user.			
+			The third, will enable the change password functionality.
+			The last section will redirect the user to a register account form.  			
+        </p>
+			<p><b>Section 1:</b>
+			<img src="log in.png" alt="Log in form"> </p>
+			<p><b>Section 2:</b>
+			<img src="google acc.png" alt="Google account form"> 	
+			<p><b>Section 3:</b>
+			<img src="forgot pass.png" alt="Forgot password form"> </p>
+			<p><b>Section 4:</b></p>
+			<p> The register form is also separated in fully developed sections. The first sections for filling the details for the account.
+			The second section is for linking a google account. The last section is for redirecting the user back to the log in form. 
+			 <img src="register.png" alt="Register account form"> </p> 	  		 
+		<br>
+		<p>
+            After the user is log in. The functionality for changing the user details can be accessed from the menu: "User profile" and "Settings"
+ 		<p><b>User profile: </b></p>
+		<p>In the user profile page enables the functionality to change the picture of the user and to verify if the email was verified. The image is saved in the firebase database. 
+		<img src="profile.png" alt="Profile page"> </p>
+		<p><b>Settings: </b></p>
+		<p>The setting page enables the functionalities to edit the name, email, password and the photo URL. 
+		<img src="settings.png" alt="Settings page"> 
+        </p>
+		<br>
+		<h5 id="game-manag" class="text-info">Second Module - Game management</h5>
+        <br>
+		<p> Our second module, or core functionality is to allow the user to access real-time statictis about the in-games and access a list of games to play. 
+		  The use of third-party APIs will be essential for this functionality to receive all the hero data and images. 
+		  The main functionalities of this core module are displayed below:
+		  <ul>
+          <li>
+		  The game must be played on most popular native display resolution;
+          </li>
+		  <li>
+		  UI must be controlled with a mouse/touchscreen interface
+          </li>
+		  <li>
+		  The game needs to be played in two players or player-computer format.
+		  </li>
+		  <li>
+		  The game needs to have different dificulties that can be played. 
+		  </li>
+		  <li>
+		  In the game, information about the hero characters must be displayed.
+		  </li>  
+		 <p> The game module can be accesed from the "Game" page from the menu: 
+		  <img src="games.png" alt="Games page"> </p>
+		<h5 id="Data-format" class="text-info">Input/Output data formats</h5>
+        <br>
+        <br>
+        <p>
+           The data sent and receive between the client and the server is of various formats. 
+		   The data transferred between the server and the user is protected using different protocols 
+		   and encryptions. The user is able to send and receive plain data in the html pages. 
+		   The data exchanged between the server and the external retailers will be in Json format due to Json high customizations 
+		   and flexibility. The third party APIs (such as Marvel API) will offer certain web services that provide data in many formats, but mainly XML or Json 
+		   for larger transactions and data imports.
+        </p>
+        <p>
+        </p> 
+        <br>
+        <h5 id="Data-flow" class="text-info">Data flow</h5>
+        <br>
+		<p> The Diagram has been made in accordance to Gane & Sarson rules and figures and depicts 
+			the flow of data in our aplication. </p>
+        <br>
+        <p>
+            The data flow of the module "Account management" is presented in the image below. 
+			In order to play a game the user must have a account with all the required informations 
+			(username and password). Thus he must first log in with a valid account. 
+			The data flown between the server and the user is secure with TSL and https, in order to protect the information 
+			passed from the user to the server, and vice versa. The user will just pass the account email
+			and password to enter its account. The server will only reply with a confirmation or rejection of credentials. 
+			Later on, the user could change the account details from the account settings page.
+			
+        </p>
+		<p> <img src="Data flow_ Account.png" alt="Data flow - Account managament module"> </p>
+		<br>
+        <h5 id="Task-flow" class="text-info">Task flow</h5>
+        <br>
+        <br>
+        <p>
+           The taskflow presented below resembles the path followed by the user that wants to add play a game.
+		   It provides a graphically represented order of the happy flow to be performed from beginning until the end.
+        </p>
+		<p> <img src="Task flow.png" alt="Task flow - Play a game"> </p>
+    </div>
+   
+</body>
+
+</html>
