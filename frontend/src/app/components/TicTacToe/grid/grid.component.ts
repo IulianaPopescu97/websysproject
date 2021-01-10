@@ -188,7 +188,7 @@ this.startGame = false;
 
   makeEasyAiMove() {
     for (let index = 0; index < this.squareComponentReferences.length; index++) {
-      if(!this.records[index]){
+      if(!this.records[index] && this.squareComponentReferences.toArray()[index]){
         this.squareComponentReferences.toArray()[index].clicked(this.turn)
         this.makeMove(index);
         break;
@@ -199,7 +199,7 @@ this.startGame = false;
   makeMediumAiMove() {
    while(true && this.checkIfThereAreEmptyPositions()) {
     let randomIndex = this.marvelApi.randomIntsFromInterval(0, this.squareComponentReferences.length -1, 1)[0];
-    if(!this.records[randomIndex]){
+    if(!this.records[randomIndex] && this.squareComponentReferences.toArray()[randomIndex]){
       this.squareComponentReferences.toArray()[randomIndex].clicked(this.turn)
       this.makeMove(randomIndex);
       break;
