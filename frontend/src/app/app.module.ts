@@ -22,7 +22,6 @@ import { LoginComponent } from "./pages/login/login.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
 import { VerifyEmailComponent } from "./pages/verify-email/verify-email.component";
-import { ProfileComponent } from './pages/profile/profile.component';
 
 import { AuthService } from "./services/auth.service";
 
@@ -75,7 +74,7 @@ var firebaseConfig = {
     MatChipsModule,
     AutocompleteLibModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent, ProfileComponent,],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent,],
   providers: [AuthService, AccountService, MarvelApiService],
   bootstrap: [AppComponent]
 })

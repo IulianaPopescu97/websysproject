@@ -20,6 +20,7 @@ import { GamesComponent } from "src/app/components/games/games.component";
 import { DisplayGameCardComponent } from "src/app/components/display-game-card/display-game-card.component";
 import { GridComponent } from "src/app/components/TicTacToe/grid/grid.component";
 import { SquareComponent } from "src/app/components/TicTacToe/square/square.component";
+import { ProfileComponent } from "src/app/pages/profile/profile.component";
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { SquareComponent } from "src/app/components/TicTacToe/square/square.comp
     DisplayGameCardComponent,
     GridComponent,
     SquareComponent,
+    ProfileComponent,
   ]
 })
 export class AdminLayoutModule {}
