@@ -1,6 +1,7 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { MarvelApiService } from 'src/app/services/marvel-api.service';
 import { SquareComponent } from '../square/square.component';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-grid',
@@ -31,6 +32,17 @@ export class GridComponent implements OnInit {
   constructor(private marvelApi: MarvelApiService) { }
 
 ngOnInit() {
+  let arr: any[3][3] =
+    [
+        [ 'O', null, 'O' ],
+        [ null, 'X', 'X' ],
+        [ null, null, null]
+    ];
+
+    console.log(arr)
+    let bestMove = this.findBestMove(arr);
+    console.log('best row',bestMove.row, 'best col' ,bestMove.col)
+
   this.initialiseGame();
  }
 
@@ -49,8 +61,11 @@ makePlayerMove(index: number) {
     else if(this.playerMode == GameMode.twoPlayersMedium) {
       this.makeMediumAiMove();
     }
+    else if(this.playerMode == GameMode.twoPlayersExpert) {
+      this.makeExpertAiMove();
+    }
   }
-
+  // console.log(this.oneDimensionalArrayToJaggedTicTacToe(this.records));
 
 }
 
@@ -196,6 +211,18 @@ this.startGame = false;
    }
   }
 
+  makeExpertAiMove() {
+    if(this.checkIfThereAreEmptyPositions()){
+      let jaggedArr = this.oneDimensionalArrayToJaggedTicTacToe(_.cloneDeep(this.records))
+      console.log('jaggedArr',jaggedArr)
+      let bestMove = this.findBestMove(jaggedArr);
+      let index = this.findIndexBasedOnRowAndCol(bestMove.row, bestMove.col);
+      console.log('bestMove',bestMove,'index',index);
+      this.squareComponentReferences.toArray()[index].clicked(this.turn)
+      this.makeMove(index);
+    }
+  }
+
   log(message) {
     console.log(message)
   }
@@ -208,6 +235,217 @@ this.startGame = false;
     });
     return result;
   }
+  //#region minMaxAlgoritm
+
+  //Make our one dimensional Array with 9 elements into a jagged array(3x3)
+  oneDimensionalArrayToJaggedTicTacToe(arr: any[9]){
+    let jaggedArr: any[][] = [];
+    jaggedArr[0] = [arr[0],arr[1],arr[2]];
+    jaggedArr[1] = [arr[3],arr[4],arr[5]];
+    jaggedArr[2] = [arr[6],arr[7],arr[8]];
+    return jaggedArr;
+  }
+
+  areMovesLeft(arr: any[3][3])
+{
+    for (let i = 0; i < 3; i++)
+        for (let j = 0; j<3; j++)
+            if (arr[i][j]==null)
+                return true;
+    return false;
+}
+
+  evaluate(arr: any[3][3], playerSymbol="X", aiSymbol="O")
+{
+    // Checking for Rows for X or O victory.
+    for (let row = 0; row < 3; row++)
+    {
+        if (arr[row][0]==arr[row][1] &&
+          arr[row][1]==arr[row][2])
+        {
+            if (arr[row][0]==aiSymbol)
+                return +10;
+            else if (arr[row][0]==playerSymbol)
+                return -10;
+        }
+    }
+
+    // Checking for Columns for X or O victory.
+    for (let col = 0; col<3; col++)
+    {
+        if (arr[0][col]==arr[1][col] &&
+          arr[1][col]==arr[2][col])
+        {
+            if (arr[0][col]==aiSymbol)
+                return +10;
+
+            else if (arr[0][col]==playerSymbol)
+                return -10;
+        }
+    }
+
+    // Checking for Diagonals for X or O victory.
+    if (arr[0][0]==arr[1][1] && arr[1][1]==arr[2][2])
+    {
+        if (arr[0][0]==aiSymbol)
+            return +10;
+        else if (arr[0][0]==playerSymbol)
+            return -10;
+    }
+
+    if (arr[0][2]==arr[1][1] && arr[1][1]==arr[2][0])
+    {
+        if (arr[0][2]==aiSymbol)
+            return +10;
+        else if (arr[0][2]==playerSymbol)
+            return -10;
+    }
+
+    // Else if none of them have won then return 0
+    return 0;
+}
+
+// This is the minimax function. It considers all
+// the possible ways the game can go and returns
+// the value of the board
+minimax(arr: any[3][3], depth: number, isMax: boolean, playerSymbol="X", aiSymbol="O" )
+{
+    let score: number = this.evaluate(arr);
+
+    // If Maximizer has won the game return it's
+    // evaluated score
+    if (score == 10)
+        return score;
+
+    // If Minimizer has won the game return it's
+    // evaluated score
+    if (score == -10)
+        return score;
+
+    // If there are no more moves and no winner then
+    // it is a tie
+    if (this.areMovesLeft(arr)==false)
+    return 0;
+
+
+    // If this maximizer's move
+    if (isMax)
+    {
+        let best = -1000;
+
+        // Traverse all cells
+        for (let i = 0; i < 3; i++)
+        {
+            for (let j = 0; j < 3; j++)
+            {
+                // Check if cell is empty
+                if (arr[i][j]==null)
+                {
+                    // Make the move
+                    arr[i][j] = aiSymbol;
+
+                    // Call minimax recursively and choose
+                    // the maximum value
+                    best = Math.max( best,
+                        this.minimax(arr, depth+1, !isMax) );
+
+                    // Undo the move
+                    arr[i][j] = null;
+                }
+            }
+        }
+        return best;
+    }
+
+    // If this minimizer's move
+    else
+    {
+        let best = 1000;
+
+        // Traverse all cells
+        for (let i = 0; i<3; i++)
+        {
+            for (let j = 0; j<3; j++)
+            {
+                // Check if cell is empty
+                if (arr[i][j]==null)
+                {
+                    // Make the move
+                    arr[i][j] = playerSymbol;
+
+                    // Call minimax recursively and choose
+                    // the minimum value
+                    best = Math.min(best,
+                           this.minimax(arr, depth+1, !isMax));
+
+                    // Undo the move
+                    arr[i][j] = null;
+                }
+            }
+        }
+        return best;
+    }
+}
+
+// This will return the best possible move for the player
+findBestMove(arr: any[3][3], aiSymbol="O")
+{
+    let bestVal = -1000;
+    let bestMove = {} as any;
+    bestMove.row = -1;
+    bestMove.col = -1;
+
+    // Traverse all cells, evaluate minimax function for
+    // all empty cells. And return the cell with optimal
+    // value.
+    for (let i = 0; i < 3; i++)
+    {
+        for (let j = 0; j<3; j++)
+        {
+            // Check if cell is empty
+            if (arr[i][j]==null)
+            {
+                // Make the move
+                arr[i][j] = aiSymbol;
+
+                // compute evaluation function for this
+                // move.
+                let moveVal = this.minimax(arr, 0, false);
+
+                // Undo the move
+                arr[i][j] = null;
+
+                // If the value of the current move is
+                // more than the best value, then update
+                // best/
+                if (moveVal > bestVal)
+                {
+                    bestMove.row = i;
+                    bestMove.col = j;
+                    bestVal = moveVal;
+                }
+            }
+        }
+    }
+
+    console.log("The value of the best Move is : %d\n\n", bestVal);
+
+    return bestMove;
+}
+
+  findIndexBasedOnRowAndCol(row: number, col: number) {
+    // let index;
+    // if(row == 0)
+    // index = col;
+    // else if(row == 1)
+    // index = col + 3;
+    // else if(row == 2)
+    // index = col + 6;
+    // return index;
+    return row * 3 + col;
+  }
+
+  //#endregion
 
 }
 
@@ -215,8 +453,9 @@ export enum GameMode {
   onePlayer = 1,
   twoPlayersEasy = 2,
   twoPlayersMedium = 3,
-  twoPlayersHard = 4,
+  twoPlayersExpert = 4,
 }
+
 
 
 

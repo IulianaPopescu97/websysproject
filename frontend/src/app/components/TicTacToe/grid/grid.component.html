@@ -10,6 +10,7 @@
   <p-button [label]="'2Players'" icon="pi pi-users" (click)="playerMode = 1; startGame=true;" styleClass="p-button-help" class="col mt-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
   <p-button [label]="'1Player Easy'" icon="pi pi-android" (click)="playerMode = 2; startGame=true;"  styleClass="p-button-success" class="col mt-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
   <p-button [label]="'1Player Medium'" icon="pi pi-android" (click)="playerMode = 3; startGame=true;" styleClass="p-button-warning" class="col mt-4 mb-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
+  <p-button [label]="'1Player Expert'" icon="pi pi-android" (click)="playerMode = 4; startGame=true;" styleClass="p-button-danger" class="col mt-4 mb-4" [style]="{'width': '57vw','height': '10vh','opacity':'0.9'}"></p-button>
   </div>
   <div style="display: grid; grid-template-columns: 15rem 15rem 15rem; grid-gap: 0rem;" *ngIf="show && startGame">
     <div *ngFor="let square of nOsquares; index as i;" >
