@@ -1,0 +1,527 @@
+<!doctype html>
+<html>
+  <head>
+    <title>GoogleMaps-API</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>GoogleMaps-API</h1>
+    <div class="app-desc">This API handles the user location</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="iuliana_p92@yahoo.com">iuliana_p92@yahoo.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/IulianaPopescu97/GoogleMaps-API/1.0.0</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#UserLocation">UserLocation</a></h4>
+  <ul>
+  <li><a href="#getUserLocation"><code><span class="http-method">get</span> /maps</code></a></li>
+  </ul>
+
+  <h1><a name="UserLocation">UserLocation</a></h1>
+  <div class="method"><a name="getUserLocation"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /maps</code></pre></div>
+    <div class="method-summary">Get the user location (<span class="nickname">getUserLocation</span>)</div>
+    <div class="method-notes">Get the user (gamer) location and display it on Google Maps.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">address (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>      <div class="param">key (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#UserLocation">UserLocation</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "results" : [ {
+    "formatted_address" : "formatted_address",
+    "types" : [ "types", "types" ],
+    "geometry" : {
+      "viewport" : {
+        "southwest" : {
+          "lng" : 2.027123023002322,
+          "lat" : 3.616076749251911
+        },
+        "northeast" : {
+          "lng" : 9.301444243932576,
+          "lat" : 7.061401241503109
+        }
+      },
+      "bounds" : {
+        "southwest" : {
+          "lng" : 5.962133916683182,
+          "lat" : 1.4658129805029452
+        },
+        "northeast" : {
+          "lng" : 6.027456183070403,
+          "lat" : 0.8008281904610115
+        }
+      },
+      "location" : {
+        "lng" : 2.3021358869347655,
+        "lat" : 5.637376656633329
+      },
+      "location_type" : "location_type"
+    },
+    "address_components" : [ {
+      "types" : [ "types", "types" ],
+      "short_name" : "short_name",
+      "long_name" : "long_name"
+    }, {
+      "types" : [ "types", "types" ],
+      "short_name" : "short_name",
+      "long_name" : "long_name"
+    } ],
+    "place_id" : "place_id"
+  }, {
+    "formatted_address" : "formatted_address",
+    "types" : [ "types", "types" ],
+    "geometry" : {
+      "viewport" : {
+        "southwest" : {
+          "lng" : 2.027123023002322,
+          "lat" : 3.616076749251911
+        },
+        "northeast" : {
+          "lng" : 9.301444243932576,
+          "lat" : 7.061401241503109
+        }
+      },
+      "bounds" : {
+        "southwest" : {
+          "lng" : 5.962133916683182,
+          "lat" : 1.4658129805029452
+        },
+        "northeast" : {
+          "lng" : 6.027456183070403,
+          "lat" : 0.8008281904610115
+        }
+      },
+      "location" : {
+        "lng" : 2.3021358869347655,
+        "lat" : 5.637376656633329
+      },
+      "location_type" : "location_type"
+    },
+    "address_components" : [ {
+      "types" : [ "types", "types" ],
+      "short_name" : "short_name",
+      "long_name" : "long_name"
+    }, {
+      "types" : [ "types", "types" ],
+      "short_name" : "short_name",
+      "long_name" : "long_name"
+    } ],
+    "place_id" : "place_id"
+  } ],
+  "status" : "status"
+}, {
+  "results" : [ {
+    "formatted_address" : "formatted_address",
+    "types" : [ "types", "types" ],
+    "geometry" : {
+      "viewport" : {
+        "southwest" : {
+          "lng" : 2.027123023002322,
+          "lat" : 3.616076749251911
+        },
+        "northeast" : {
+          "lng" : 9.301444243932576,
+          "lat" : 7.061401241503109
+        }
+      },
+      "bounds" : {
+        "southwest" : {
+          "lng" : 5.962133916683182,
+          "lat" : 1.4658129805029452
+        },
+        "northeast" : {
+          "lng" : 6.027456183070403,
+          "lat" : 0.8008281904610115
+        }
+      },
+      "location" : {
+        "lng" : 2.3021358869347655,
+        "lat" : 5.637376656633329
+      },
+      "location_type" : "location_type"
+    },
+    "address_components" : [ {
+      "types" : [ "types", "types" ],
+      "short_name" : "short_name",
+      "long_name" : "long_name"
+    }, {
+      "types" : [ "types", "types" ],
+      "short_name" : "short_name",
+      "long_name" : "long_name"
+    } ],
+    "place_id" : "place_id"
+  }, {
+    "formatted_address" : "formatted_address",
+    "types" : [ "types", "types" ],
+    "geometry" : {
+      "viewport" : {
+        "southwest" : {
+          "lng" : 2.027123023002322,
+          "lat" : 3.616076749251911
+        },
+        "northeast" : {
+          "lng" : 9.301444243932576,
+          "lat" : 7.061401241503109
+        }
+      },
+      "bounds" : {
+        "southwest" : {
+          "lng" : 5.962133916683182,
+          "lat" : 1.4658129805029452
+        },
+        "northeast" : {
+          "lng" : 6.027456183070403,
+          "lat" : 0.8008281904610115
+        }
+      },
+      "location" : {
+        "lng" : 2.3021358869347655,
+        "lat" : 5.637376656633329
+      },
+      "location_type" : "location_type"
+    },
+    "address_components" : [ {
+      "types" : [ "types", "types" ],
+      "short_name" : "short_name",
+      "long_name" : "long_name"
+    }, {
+      "types" : [ "types", "types" ],
+      "short_name" : "short_name",
+      "long_name" : "long_name"
+    } ],
+    "place_id" : "place_id"
+  } ],
+  "status" : "status"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The user location is displayed.
+        
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Address_components"><code>Address_components</code></a></li>
+    <li><a href="#Bounds"><code>Bounds</code></a></li>
+    <li><a href="#Geometry"><code>Geometry</code></a></li>
+    <li><a href="#Location"><code>Location</code></a></li>
+    <li><a href="#Northeast"><code>Northeast</code></a></li>
+    <li><a href="#Results"><code>Results</code></a></li>
+    <li><a href="#Southwest"><code>Southwest</code></a></li>
+    <li><a href="#UserLocation"><code>UserLocation</code></a></li>
+    <li><a href="#Viewport"><code>Viewport</code></a></li>
+    <li><a href="#Viewport_Northeast"><code>Viewport_Northeast</code></a></li>
+    <li><a href="#Viewport_Southwest"><code>Viewport_Southwest</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Address_components"><code>Address_components</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">long_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">short_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">types (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Bounds"><code>Bounds</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">northeast (optional)</div><div class="param-desc"><span class="param-type"><a href="#Northeast">Northeast</a></span>  </div>
+<div class="param">southwest (optional)</div><div class="param-desc"><span class="param-type"><a href="#Southwest">Southwest</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Geometry"><code>Geometry</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">bounds (optional)</div><div class="param-desc"><span class="param-type"><a href="#Bounds">Bounds</a></span>  </div>
+<div class="param">location (optional)</div><div class="param-desc"><span class="param-type"><a href="#Location">Location</a></span>  </div>
+<div class="param">location_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">viewport (optional)</div><div class="param-desc"><span class="param-type"><a href="#Viewport">Viewport</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Location"><code>Location</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">lat (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+<div class="param">lng (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Northeast"><code>Northeast</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">lat (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+<div class="param">lng (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Results"><code>Results</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">address_components (optional)</div><div class="param-desc"><span class="param-type"><a href="#Address_components">array[Address_components]</a></span>  </div>
+<div class="param">formatted_address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">geometry (optional)</div><div class="param-desc"><span class="param-type"><a href="#Geometry">Geometry</a></span>  </div>
+<div class="param">place_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">types (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Southwest"><code>Southwest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">lat (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+<div class="param">lng (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserLocation"><code>UserLocation</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">results (optional)</div><div class="param-desc"><span class="param-type"><a href="#Results">array[Results]</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Viewport"><code>Viewport</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">northeast (optional)</div><div class="param-desc"><span class="param-type"><a href="#Viewport_Northeast">Viewport_Northeast</a></span>  </div>
+<div class="param">southwest (optional)</div><div class="param-desc"><span class="param-type"><a href="#Viewport_Southwest">Viewport_Southwest</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Viewport_Northeast"><code>Viewport_Northeast</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">lat (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+<div class="param">lng (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Viewport_Southwest"><code>Viewport_Southwest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">lat (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+<div class="param">lng (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
