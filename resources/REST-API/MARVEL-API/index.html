@@ -1,0 +1,984 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Marvel API</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>Marvel API</h1>
+    <div class="app-desc">This API handles the characters informations that we need for playing the TicTaeToe game</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="iuliana_p92@yahoo.com">iuliana_p92@yahoo.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/IulianaPopescu97/Marvel-API/1.0.0</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#MarvelCStories">MarvelCStories</a></h4>
+  <ul>
+  <li><a href="#getAllMarvelStories"><code><span class="http-method">get</span> /stories</code></a></li>
+  </ul>
+  <h4><a href="#MarvelCharacters">MarvelCharacters</a></h4>
+  <ul>
+  <li><a href="#getAllCharacters"><code><span class="http-method">get</span> /characters</code></a></li>
+  <li><a href="#getCharactersByComics"><code><span class="http-method">get</span> /charachters/{comics}</code></a></li>
+  <li><a href="#getOneByStartLetters"><code><span class="http-method">get</span> /charachters/{startLetters}</code></a></li>
+  </ul>
+
+  <h1><a name="MarvelCStories">MarvelCStories</a></h1>
+  <div class="method"><a name="getAllMarvelStories"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /stories</code></pre></div>
+    <div class="method-summary">list of Marvel characters (<span class="nickname">getAllMarvelStories</span>)</div>
+    <div class="method-notes">List all the stories from Marvel api</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Stories">Stories</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "stories" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/stories",
+    "available" : 7,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    } ]
+  }
+}, {
+  "stories" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/stories",
+    "available" : 7,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    } ]
+  }
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful data loaded
+        <a href="#Stories">Stories</a>
+    <h4 class="field-label">500</h4>
+    Error from server
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="MarvelCharacters">MarvelCharacters</a></h1>
+  <div class="method"><a name="getAllCharacters"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /characters</code></pre></div>
+    <div class="method-summary">list of Marvel characters (<span class="nickname">getAllCharacters</span>)</div>
+    <div class="method-notes">List all the characters from Marvel api</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Characters">Characters</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "thumbnail" : {
+    "path" : "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16",
+    "extension" : "jpg"
+  },
+  "urls" : [ {
+    "type" : "detail",
+    "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+  }, {
+    "type" : "detail",
+    "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+  } ],
+  "stories" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/stories",
+    "available" : 7,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    } ]
+  },
+  "series" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/series",
+    "available" : 2,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+    }, {
+      "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+    } ]
+  },
+  "comics" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/comics",
+    "available" : 3,
+    "returned" : 1,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+    } ]
+  },
+  "name" : "A-Bomb (HAS)",
+  "description" : "Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed ...",
+  "modified" : "2013-09-18T15:54:04-0400",
+  "id" : 1017100,
+  "resourceURI" : "http://gateway.marvel.com/v1/public/characters/1017100",
+  "events" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/events",
+    "available" : 0,
+    "returned" : 0
+  }
+}, {
+  "thumbnail" : {
+    "path" : "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16",
+    "extension" : "jpg"
+  },
+  "urls" : [ {
+    "type" : "detail",
+    "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+  }, {
+    "type" : "detail",
+    "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+  } ],
+  "stories" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/stories",
+    "available" : 7,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    } ]
+  },
+  "series" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/series",
+    "available" : 2,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+    }, {
+      "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+    } ]
+  },
+  "comics" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/comics",
+    "available" : 3,
+    "returned" : 1,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+    } ]
+  },
+  "name" : "A-Bomb (HAS)",
+  "description" : "Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed ...",
+  "modified" : "2013-09-18T15:54:04-0400",
+  "id" : 1017100,
+  "resourceURI" : "http://gateway.marvel.com/v1/public/characters/1017100",
+  "events" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/events",
+    "available" : 0,
+    "returned" : 0
+  }
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful data loaded
+        <a href="#Characters">Characters</a>
+    <h4 class="field-label">500</h4>
+    Error from server
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getCharactersByComics"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /charachters/{comics}</code></pre></div>
+    <div class="method-summary">Get characters by comics (<span class="nickname">getCharactersByComics</span>)</div>
+    <div class="method-notes">Search characters by comics</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">comics (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Characters">Characters</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "thumbnail" : {
+    "path" : "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16",
+    "extension" : "jpg"
+  },
+  "urls" : [ {
+    "type" : "detail",
+    "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+  }, {
+    "type" : "detail",
+    "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+  } ],
+  "stories" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/stories",
+    "available" : 7,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    } ]
+  },
+  "series" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/series",
+    "available" : 2,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+    }, {
+      "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+    } ]
+  },
+  "comics" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/comics",
+    "available" : 3,
+    "returned" : 1,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+    } ]
+  },
+  "name" : "A-Bomb (HAS)",
+  "description" : "Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed ...",
+  "modified" : "2013-09-18T15:54:04-0400",
+  "id" : 1017100,
+  "resourceURI" : "http://gateway.marvel.com/v1/public/characters/1017100",
+  "events" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/events",
+    "available" : 0,
+    "returned" : 0
+  }
+}, {
+  "thumbnail" : {
+    "path" : "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16",
+    "extension" : "jpg"
+  },
+  "urls" : [ {
+    "type" : "detail",
+    "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+  }, {
+    "type" : "detail",
+    "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+  } ],
+  "stories" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/stories",
+    "available" : 7,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+      "type" : "cover"
+    } ]
+  },
+  "series" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/series",
+    "available" : 2,
+    "returned" : 2,
+    "items" : [ {
+      "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+    }, {
+      "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+    } ]
+  },
+  "comics" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/comics",
+    "available" : 3,
+    "returned" : 1,
+    "items" : [ {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+    }, {
+      "name" : "Hulk (2008)",
+      "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+    } ]
+  },
+  "name" : "A-Bomb (HAS)",
+  "description" : "Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed ...",
+  "modified" : "2013-09-18T15:54:04-0400",
+  "id" : 1017100,
+  "resourceURI" : "http://gateway.marvel.com/v1/public/characters/1017100",
+  "events" : {
+    "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/events",
+    "available" : 0,
+    "returned" : 0
+  }
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The characters find by comics
+        <a href="#Characters">Characters</a>
+    <h4 class="field-label">500</h4>
+    Error from server
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getOneByStartLetters"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /charachters/{startLetters}</code></pre></div>
+    <div class="method-summary">Get one character by start name letters (<span class="nickname">getOneByStartLetters</span>)</div>
+    <div class="method-notes">Search a character by the start name letters</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">startLetters (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Character">Character</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "total" : 1,
+  "offset" : 0,
+  "limit" : 20,
+  "count" : 1,
+  "results" : [ {
+    "thumbnail" : {
+      "path" : "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16",
+      "extension" : "jpg"
+    },
+    "urls" : [ {
+      "type" : "detail",
+      "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+    }, {
+      "type" : "detail",
+      "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+    } ],
+    "stories" : {
+      "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/stories",
+      "available" : 7,
+      "returned" : 2,
+      "items" : [ {
+        "name" : "Hulk (2008)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+        "type" : "cover"
+      }, {
+        "name" : "Hulk (2008)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+        "type" : "cover"
+      } ]
+    },
+    "series" : {
+      "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/series",
+      "available" : 2,
+      "returned" : 2,
+      "items" : [ {
+        "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+      }, {
+        "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+      } ]
+    },
+    "comics" : {
+      "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/comics",
+      "available" : 3,
+      "returned" : 1,
+      "items" : [ {
+        "name" : "Hulk (2008)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+      }, {
+        "name" : "Hulk (2008)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+      } ]
+    },
+    "name" : "A-Bomb (HAS)",
+    "description" : "Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed ...",
+    "modified" : "2013-09-18T15:54:04-0400",
+    "id" : 1017100,
+    "resourceURI" : "http://gateway.marvel.com/v1/public/characters/1017100",
+    "events" : {
+      "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/events",
+      "available" : 0,
+      "returned" : 0
+    }
+  }, {
+    "thumbnail" : {
+      "path" : "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16",
+      "extension" : "jpg"
+    },
+    "urls" : [ {
+      "type" : "detail",
+      "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+    }, {
+      "type" : "detail",
+      "url" : "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=8570eca2f5532e96e6a405162b3f3b71"
+    } ],
+    "stories" : {
+      "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/stories",
+      "available" : 7,
+      "returned" : 2,
+      "items" : [ {
+        "name" : "Hulk (2008)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+        "type" : "cover"
+      }, {
+        "name" : "Hulk (2008)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/stories/92078",
+        "type" : "cover"
+      } ]
+    },
+    "series" : {
+      "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/series",
+      "available" : 2,
+      "returned" : 2,
+      "items" : [ {
+        "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+      }, {
+        "name" : "FREE COMIC BOOK DAY 2013 1 (2013)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/series/17765"
+      } ]
+    },
+    "comics" : {
+      "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/comics",
+      "available" : 3,
+      "returned" : 1,
+      "items" : [ {
+        "name" : "Hulk (2008)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+      }, {
+        "name" : "Hulk (2008)",
+        "resourceURI" : "http://gateway.marvel.com/v1/public/comics/40632"
+      } ]
+    },
+    "name" : "A-Bomb (HAS)",
+    "description" : "Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed ...",
+    "modified" : "2013-09-18T15:54:04-0400",
+    "id" : 1017100,
+    "resourceURI" : "http://gateway.marvel.com/v1/public/characters/1017100",
+    "events" : {
+      "collectionURI" : "http://gateway.marvel.com/v1/public/characters/1017100/events",
+      "available" : 0,
+      "returned" : 0
+    }
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The charactier find by start name letters
+        <a href="#Character">Character</a>
+    <h4 class="field-label">500</h4>
+    Error from server
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Character"><code>Character</code></a></li>
+    <li><a href="#Character_comics"><code>Character_comics</code></a></li>
+    <li><a href="#Character_comics_items"><code>Character_comics_items</code></a></li>
+    <li><a href="#Character_events"><code>Character_events</code></a></li>
+    <li><a href="#Character_results"><code>Character_results</code></a></li>
+    <li><a href="#Character_series"><code>Character_series</code></a></li>
+    <li><a href="#Character_series_items"><code>Character_series_items</code></a></li>
+    <li><a href="#Character_stories"><code>Character_stories</code></a></li>
+    <li><a href="#Character_stories_items"><code>Character_stories_items</code></a></li>
+    <li><a href="#Character_thumbnail"><code>Character_thumbnail</code></a></li>
+    <li><a href="#Character_urls"><code>Character_urls</code></a></li>
+    <li><a href="#Characters"><code>Characters</code></a></li>
+    <li><a href="#Characters_inner"><code>Characters_inner</code></a></li>
+    <li><a href="#Stories"><code>Stories</code></a></li>
+    <li><a href="#Stories_inner"><code>Stories_inner</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Character"><code>Character</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">offset (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 0</span></div>
+<div class="param">limit (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 20</span></div>
+<div class="param">total (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+<div class="param">count (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+<div class="param">results (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_results">array[Character_results]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_comics"><code>Character_comics</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">available (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 3</span></div>
+<div class="param">collectionURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/characters/1017100/comics</span></div>
+<div class="param">items (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_comics_items">array[Character_comics_items]</a></span>  </div>
+<div class="param">returned (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_comics_items"><code>Character_comics_items</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">resourceURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/comics/40632</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Hulk (2008)</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_events"><code>Character_events</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">available (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 0</span></div>
+<div class="param">collectionURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/characters/1017100/events</span></div>
+<div class="param">returned (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 0</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_results"><code>Character_results</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1017100</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: A-Bomb (HAS)</span></div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Rick Jones has been Hulk&#x27;s best bud since day one, but now he&#x27;s more than a friend...he&#x27;s a teammate! Transformed ...</span></div>
+<div class="param">modified (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2013-09-18T15:54:04-0400</span></div>
+<div class="param">thumbnail (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_thumbnail">Character_thumbnail</a></span>  </div>
+<div class="param">resourceURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/characters/1017100</span></div>
+<div class="param">comics (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_comics">Character_comics</a></span>  </div>
+<div class="param">series (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_series">Character_series</a></span>  </div>
+<div class="param">stories (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_stories">Character_stories</a></span>  </div>
+<div class="param">events (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_events">Character_events</a></span>  </div>
+<div class="param">urls (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_urls">array[Character_urls]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_series"><code>Character_series</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">available (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2</span></div>
+<div class="param">collectionURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/characters/1017100/series</span></div>
+<div class="param">items (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_series_items">array[Character_series_items]</a></span>  </div>
+<div class="param">returned (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_series_items"><code>Character_series_items</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">resourceURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/series/17765</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: FREE COMIC BOOK DAY 2013 1 (2013)</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_stories"><code>Character_stories</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">available (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 7</span></div>
+<div class="param">collectionURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/characters/1017100/stories</span></div>
+<div class="param">items (optional)</div><div class="param-desc"><span class="param-type"><a href="#Character_stories_items">array[Character_stories_items]</a></span>  </div>
+<div class="param">returned (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_stories_items"><code>Character_stories_items</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">resourceURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/stories/92078</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Hulk (2008)</span></div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: cover</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_thumbnail"><code>Character_thumbnail</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">path (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16</span></div>
+<div class="param">extension (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: jpg</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Character_urls"><code>Character_urls</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: detail</span></div>
+<div class="param">url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://marvel.com/characters/76/a-bomb?utm_campaign&#x3D;apiRef&amp;utm_source&#x3D;8570eca2f5532e96e6a405162b3f3b71</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Characters"><code>Characters</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Characters_inner"><code>Characters_inner</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1017100</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: A-Bomb (HAS)</span></div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Rick Jones has been Hulk&#x27;s best bud since day one, but now he&#x27;s more than a friend...he&#x27;s a teammate! Transformed ...</span></div>
+<div class="param">modified (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2013-09-18T15:54:04-0400</span></div>
+<div class="param">thumbnail (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">resourceURI (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: http://gateway.marvel.com/v1/public/characters/1017100</span></div>
+<div class="param">comics (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">series (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">stories (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">events (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">urls (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">array[Object]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Stories"><code>Stories</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Stories_inner"><code>Stories_inner</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">stories (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
