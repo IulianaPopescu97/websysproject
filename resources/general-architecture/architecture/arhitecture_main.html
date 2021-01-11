@@ -4,7 +4,7 @@
 <head>
     <!--  Meta  -->
     <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
-    <title>MarvelHeroJam Web Application Documentation</title>
+    <title>MarvelHeroJam General arhitecture Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--  Styles  -->
@@ -127,24 +127,24 @@
 			The last section will redirect the user to a register account form.  			
         </p>
 			<p><b>Section 1:</b>
-			<img src="log in.png" alt="Log in form"> </p>
+			<img src="../app-design/log in.png" alt="Log in form"> </p>
 			<p><b>Section 2:</b>
-			<img src="google acc.png" alt="Google account form"> 	
+			<img src="../app-design/google acc.png" alt="Google account form"> 	
 			<p><b>Section 3:</b>
-			<img src="forgot pass.png" alt="Forgot password form"> </p>
+			<img src="../app-design/forgot pass.png" alt="Forgot password form"> </p>
 			<p><b>Section 4:</b></p>
 			<p> The register form is also separated in fully developed sections. The first sections for filling the details for the account.
 			The second section is for linking a google account. The last section is for redirecting the user back to the log in form. 
-			 <img src="register.png" alt="Register account form"> </p> 	  		 
+			 <img src="../app-design/register.png" alt="Register account form"> </p> 	  		 
 		<br>
 		<p>
             After the user is log in. The functionality for changing the user details can be accessed from the menu: "User profile" and "Settings"
  		<p><b>User profile: </b></p>
 		<p>In the user profile page enables the functionality to change the picture of the user and to verify if the email was verified. The image is saved in the firebase database. 
-		<img src="profile.png" alt="Profile page"> </p>
+		<img src="../app-design/profile.png" alt="Profile page"> </p>
 		<p><b>Settings: </b></p>
 		<p>The setting page enables the functionalities to edit the name, email, password and the photo URL. 
-		<img src="settings.png" alt="Settings page"> 
+		<img src="../app-design/settings.png" alt="Settings page"> 
         </p>
 		<br>
 		<h5 id="game-manag" class="text-info">Second Module - Game management</h5>
@@ -169,7 +169,7 @@
 		  In the game, information about the hero characters must be displayed.
 		  </li>  
 		 <p> The game module can be accesed from the "Game" page from the menu: 
-		  <img src="games.png" alt="Games page"> </p>
+		  <img src="../app-design/games.png" alt="Games page"> </p>
 		<h5 id="Data-format" class="text-info">Input/Output data formats</h5>
         <br>
         <br>
@@ -197,9 +197,8 @@
 			passed from the user to the server, and vice versa. The user will just pass the account email
 			and password to enter its account. The server will only reply with a confirmation or rejection of credentials. 
 			Later on, the user could change the account details from the account settings page.
-			
         </p>
-		<p> <img src="Data flow_ Account.png" alt="Data flow - Account managament module"> </p>
+		<p> <img src="../Data flow_ Account.png" alt="Data flow - Account managament module"> </p>
 		<br>
         <h5 id="Task-flow" class="text-info">Task flow</h5>
         <br>
@@ -208,7 +207,7 @@
            The taskflow presented below resembles the path followed by the user that wants to add play a game.
 		   It provides a graphically represented order of the happy flow to be performed from beginning until the end.
         </p>
-		<p> <img src="Task flow.png" alt="Task flow - Play a game"> </p>
+		<p> <img src="../Task flow.png" alt="Task flow - Play a game"> </p>
     </div>
    
 </body>

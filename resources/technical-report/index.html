@@ -96,9 +96,13 @@
                     <li><a href="#uiDesign">User interaction and design</a></li>
                     <ol class="ml-1 sub-list content-list">
                         <li><a href="#authentication">Authentication</a></li>
-                        <li><a href="#home-page">Home page</a></li>
+                        <li><a href="#dashboard-page">Dashboard page</a></li>
                         <li><a href="#games-page">Games page</a></li>
-                        <li><a href="#location-page">Gamer Location</a></li>
+                        <li><a href="#location-page">Gamer Location page</a></li>
+						<li><a href="#forgot-password-page">Forgot Password Page</a></li>
+						<li><a href="#profile-page">Profile Page</a></li>
+						<li><a href="#verify-email-page">Verify email Page</a></li>
+						<li><a href="#settings-page">Settings Page</a></li>
                     </ol>
                 </ol>
         </nav>
@@ -131,6 +135,7 @@
             While developing this web platform, we have taken into consideration various aspects, such as the user
             interaction and gameplay and also the overall design and look of the website, which we considered vital for
             it's charm and succes.
+			Because we haven't deploy it on an environment, we choose to use <a href="https://ngrok.com/"> NgRok <a> for exposing our localhost web server.
         </p>
         <p>
             As far as the design goes, we considerd that it would be the best fit for our webiste if we went for a
@@ -182,6 +187,10 @@
                 <span class="text-secondary"><code onclick="location.href='https://getbootstrap.com/docs/4.0/components/modal/'" style="cursor: pointer">Bootstrap</code></span>
                 <p class="ml-4">Bootstrap allows us to use pre-made templates for CSS classes and also graphical control elements like a modal, navbar etc.</p>
             </li>
+			<li>
+                <span class="text-secondary"><code onclick="location.href='https://getbootstrap.com/docs/4.0/components/modal/'" style="cursor: pointer">Black-dashboard-angular template </code></span>
+                <p class="ml-4">Black-Dashboard-Angular is a beautiful Bootstrap 4 Admin dashboard that uses Angular with a large number of components designed to scale and look amazing.</p>
+            </li>
         </ul>
         <hr>
         <br>
@@ -193,7 +202,7 @@
         <p>FireBase is a compllex BaaS that will also handle our data persistance needs, as it would serve us as an API, Server and also data storage solution.</p>
         <hr>
         <br>
-        <h3 id="api" class="text-info">API</h3>
+        <h3 id="api" class="text-info">APIs</h3>
         <p>
            The web service that we chose to integrate into our application is one for data in the JSON format, as well as images.
            The service that we use is called <code onclick="location.href='https://developer.marvel.com/'" style="cursor: pointer; color: blue">The Marvel Comics API</code>
@@ -211,6 +220,20 @@
                 For the requested image the API provides different query parameters that can be used to alter the images in various ways.
             </li>
         </ul>
+		<br>
+		<p>
+			We also chose to use thw APIs in order to get different information for the user location, as follows:
+		</p>
+		 <ul class="ml-4 text-secondary">
+            <li>
+                The <code onclick="location.href='https://developers.google.com/maps/documentation/javascript/overview'" style="cursor: pointer; color: blue">Google Maps API</code> is a RESTful service which provides methods for accessing specific resources. We use this API in order to 
+				show the location, on map, of the user and also to allow it to see the locations of the other players.
+            </li>
+            <li>
+               The <code onclick="location.href='https://ipinfo.io/developers'" style="cursor: pointer; color: blue"> IPinfo API</code> is used to shoew the user informations about his IP address, hostname, internet provider.
+			   All gamers are passionated about this type of informtion :)) .
+            </li>
+        </ul>
         <hr><br>
         <h3 id="uiDesign" class="text-info">User interaction and design</h3>
         <p>The web application we propose consists of multiple components, as follows:</p>
@@ -225,20 +248,19 @@
         <p>
            We tried to keep the registration form as small and not-intrusive as possible, as to not endager any important personal imformation to a possible leak
            or risk that a user would leave our page due to the fear of providing us with it's important privare details.
-           The required fields in our sign-up form are: username, email and password.
+           The required fields in our sign-up form are: email and password.
+		   We have also implemented Google login functionality to offer the user a simple and confortable way to login. By using this, the user profile picture will 
+		   be automatically updated with the one he has on Google Account.
+		   If the user will chose the classic authentication (email, password), he will receive a default profile picture which he can change later.
         </p>
         <p>
         </p> 
         <br>
-        <h5 id="home-page" class="text-info">Home page</h5>
-        <br>
+        <h5 id="dashboard-page" class="text-info">Dashboard page</h5>
         <br>
         <p>
-            The home page contains a list with the recommended games based on their rating that you can try out and play, a setting section where you can change
-            you username or password and also the sign-out functionality. 
-        </p>
-        <p>
-            Also, it contains a list of tips and tricks on how to play these games and achive the best results.
+            The dashboard page contains some graphs (at this moment those fon't show relevant data, but they will in th future - data as high scores, activity by week, etc.), the app menu 
+            and also the sign-out/ see profile functionalities. 
         </p>
         <br>
         <h5 id="games-page" class="text-info">Games page</h5>
@@ -256,6 +278,8 @@
             <li>
                 PrimeNg and AngularMaterial: for designing the layout of the page, grid model, etc.
             </li>
+			<li>
+               <a href="https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-3-tic-tac-toe-ai-finding-optimal-move/"> Minimax Algorithm </a>: for creating an Expert mode to play the game
         </ul>
         <br>
         <h5 id="location-page" class="text-info">Gamer Location</h5>
@@ -263,8 +287,42 @@
             On this page the users can find information on their current location via a pineed location using <span class="text-secondary"><code onclick="location.href='https://developers.google.com/maps/documentation/javascript/overview'" style="cursor: pointer">Google Maps Aps</code>. 
         </p>
 	<p>
-		Their longitude and latiude informations are taken from the IpInfoApi and provided to the Google Maps Aps.
+		Their longitude and latiude informations are taken from the <a href="https://ipinfo.io/developers">IpInfoApi </a> and provided to the Google Maps Aps.
 	</p>
+	<br>
+        <h5 id="forgot-password-page" class="text-info">Forgot password page</h5>
+        <br>
+        <p>
+            This page is used when the user forget his password. The user must provide his valid email, otherwise he will receive a error message, and then he will receive an message saying "Password reset email sent, check your inbox.".
+			The last step is for the user to check the email and reset his password.
+        </p>
+        <br>
+	<br>
+        <h5 id="profile-page" class="text-info">Profile page</h5>
+        <br>
+        <p>
+            On profile page, the user can see some of his details as his email and some location details (the IP address, country, county, host name and internet provider).
+			The location details are provided by <a href="https://ipinfo.io/developers">IpInfoApi </a>.
+			Also, here, the user can change his profile picture.
+        </p>
+        <br>
+	<br>
+        <h5 id="verify-email-page" class="text-info">Verify email page</h5>
+        <br>
+        <p>
+            Once an user register in our system, he must verify the email that he used for registration. If he fails to verify the email, he can't access our app.
+			Even if he will want to access the dashboard or the games page, he will be redirectet to the sign-in page ( this is done by using Angular Routing).
+        </p>
+        <br>
+		<br>
+        <h5 id="settings-page" class="text-info">Settings page</h5>
+        <br>
+        <p>
+            This page allows the user to change the name dispalyed in the app, the photo URL or change his password.
+			When changing the password, the user will be required to enter a new password, confirm it and than confirm his current password.
+			When pressing Submit a message is showed "Please, double check that you have properly completed all fields!".
+        </p>
+        <br>
     </div>
    
 </body>
